@@ -41,12 +41,12 @@ namespace UI.Desktop
         }
         public CursosDesktop(int ID, ModoForm modo) : this()
         {
-            this.SetCBComision();
-            this.SetCBMateria();
             this.Modo = modo;
             CursoLogic cl = new CursoLogic();
             CursoActual = cl.GetOne(ID);
             MapearDeDatos();
+            this.SetCBComision();
+            this.SetCBMateria();
         }
         public override void MapearDeDatos()
 
@@ -146,6 +146,11 @@ namespace UI.Desktop
 
                 cbComision.Items.Add(item);
             }
+            if (CursoActual != null)
+            {
+                string plstr = cl.GetOne(CursoActual.IDComision).Descripcion;
+                cbComision.SelectedIndex = cbComision.FindStringExact(plstr);
+            }
         }
         public void SetCBMateria()
         {
@@ -160,6 +165,11 @@ namespace UI.Desktop
                 item.Value = mat.ID;
 
                 cbMateria.Items.Add(item);
+            }
+            if (CursoActual != null)
+            {
+                string plstr = ml.GetOne(CursoActual.IDMateria).Descripcion;
+                cbMateria.SelectedIndex = cbMateria.FindStringExact(plstr);
             }
         }
 

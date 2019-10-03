@@ -39,12 +39,12 @@ namespace UI.Desktop
             this.SetCBComision();
         }
         public ComisionesDesktop(int ID, ModoForm modo) : this()
-        {
-            this.SetCBComision();
+        {          
             this.Modo = modo;
             ComisionLogic cl = new ComisionLogic();
             ComisionActual = cl.GetOne(ID);
             MapearDeDatos();
+            this.SetCBComision();
         }
         public override void MapearDeDatos()
 
@@ -53,6 +53,7 @@ namespace UI.Desktop
             this.txtDescripcion.Text = this.ComisionActual.Descripcion;
             this.txtAnioEspe.Text = this.ComisionActual.AnioEspecialidad.ToString();
             //this.cbIDPlan.SelectedItem = this.ComisionActual.IDPlan.ToString();
+
 
             switch (Modo)
             {
@@ -103,6 +104,7 @@ namespace UI.Desktop
                         this.ComisionActual.State = Business.Entities.Plan.States.Modified;
                         ComboboxItem cbi = (ComboboxItem)this.cbIDPlan.SelectedItem;
                         this.ComisionActual.IDPlan = cbi.Value;
+                       
                     }
                     break;
                 case ModoForm.Baja:
@@ -142,15 +144,20 @@ namespace UI.Desktop
         public void SetCBComision()
         {
             PlanLogic pl = new PlanLogic();
-            List<Plan> planes = new List<Plan>();
-            planes = pl.GetAll();
-            foreach (Plan plan in planes)
-            {
-                ComboboxItem item = new ComboboxItem();
-                item.Text = plan.Descripcion;
-                item.Value = plan.ID;
+              List<Plan> planes = new List<Plan>();
+              planes = pl.GetAll();
+              foreach (Plan plan in planes)
+              {
+                  ComboboxItem item = new ComboboxItem();
+                  item.Text = plan.Descripcion;
+                  item.Value = plan.ID;
 
-                cbIDPlan.Items.Add(item);
+                  cbIDPlan.Items.Add(item);
+              }
+            if (ComisionActual != null)
+            {
+                string plstr = pl.GetOne(ComisionActual.IDPlan).Descripcion;
+                cbIDPlan.SelectedIndex = cbIDPlan.FindStringExact(plstr);
             }
         }
 

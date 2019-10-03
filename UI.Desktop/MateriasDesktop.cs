@@ -40,11 +40,11 @@ namespace UI.Desktop
         }
         public MateriasDesktop(int ID, ModoForm modo) : this()
         {
-            this.SetCBMateria();
             this.Modo = modo;
             MateriaLogic ml = new MateriaLogic();
             MateriaActual = ml.GetOne(ID);
             MapearDeDatos();
+            this.SetCBMateria();
         }
         public override void MapearDeDatos()
 
@@ -167,6 +167,11 @@ namespace UI.Desktop
                 item.Value = espe.ID;
 
                 cbDescPlan.Items.Add(item);
+            }
+            if (MateriaActual != null)
+            {
+                string plstr = pl.GetOne(MateriaActual.IDPlan).Descripcion;
+                cbDescPlan.SelectedIndex = cbDescPlan.FindStringExact(plstr);
             }
         }
     }

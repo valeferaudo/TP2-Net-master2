@@ -87,6 +87,7 @@
             // 
             this.dgvEspecialidad.AllowUserToAddRows = false;
             this.dgvEspecialidad.AllowUserToDeleteRows = false;
+            this.dgvEspecialidad.AutoGenerateColumns = false;
             this.dgvEspecialidad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEspecialidad.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idEspecialidad,

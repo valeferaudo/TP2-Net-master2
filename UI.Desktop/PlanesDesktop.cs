@@ -40,24 +40,18 @@ namespace UI.Desktop
         }
         public PlanesDesktop(int ID, ModoForm modo) : this()
         {
-            this.SetCBPlan();
             this.Modo = modo;
             PlanLogic pl = new PlanLogic();
             PlanActual = pl.GetOne(ID);
             MapearDeDatos();
+            this.SetCBPlan();
         }
         public override void MapearDeDatos()
 
         {
             this.txtID.Text = this.PlanActual.ID.ToString();
             this.txtDescripcion.Text = this.PlanActual.Descripcion;
-            /*PlanLogic pl = new PlanLogic();
-            List<Plan> planes = pl.GetAll();
-            foreach (Plan value in planes)
-            {
-                cbPlan.Items.Add(value.Descripcion);
-            }
-                */
+            
            
 
             switch (Modo)
@@ -167,6 +161,11 @@ namespace UI.Desktop
                 item.Value = espe.ID;
 
                 cbPlan.Items.Add(item);
+            }
+            if (PlanActual != null)
+            {
+                string plstr = el.GetOne(PlanActual.IDEspecialidad).Descripcion;
+                cbPlan.SelectedIndex = cbPlan.FindStringExact(plstr);
             }
         }
     }
