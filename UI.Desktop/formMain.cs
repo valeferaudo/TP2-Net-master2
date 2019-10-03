@@ -89,6 +89,10 @@ namespace UI.Desktop
                     this.alumnosToolStripMenuItem.Visible = false;
                     this.especialidadesToolStripMenuItem.Visible = false;
                     this.planesToolStripMenuItem.Visible = false;
+                    this.especialidadesToolStripMenuItem.Visible = false;
+                    this.comisionesToolStripMenuItem.Visible = false;
+                    this.materiasToolStripMenuItem.Visible = false;
+                    this.cursosToolStripMenuItem.Visible = false;
                 }
                 if (per.TipoPersona == Personas.tipopersona.Docente)
                 {
@@ -97,10 +101,14 @@ namespace UI.Desktop
                     this.usuariosToolStripMenuItem.Visible = false;
                     this.especialidadesToolStripMenuItem.Visible = false;
                     this.planesToolStripMenuItem.Visible = false;
+                    this.comisionesToolStripMenuItem.Visible = false;
+                    this.materiasToolStripMenuItem.Visible = false;
+                    this.cursosToolStripMenuItem.Visible = false;
                 }
                 if (per.TipoPersona == Personas.tipopersona.Admin)
                 {
                     this.inscripcionesToolStripMenuItem.Visible = false;
+                    
                 }
             }
             catch (Exception)
