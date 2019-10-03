@@ -86,6 +86,7 @@ namespace UI.Desktop
             {
                 PersonaLogic pl = new PersonaLogic();
                 Personas per = pl.GetOne(usr.IDPersona);
+                this.miUsuarioToolStripMenuItem.Visible = false;
                 if (per.TipoPersona == Personas.tipopersona.Alumno)
                 {
                     this.usuariosToolStripMenuItem.Visible = false;
