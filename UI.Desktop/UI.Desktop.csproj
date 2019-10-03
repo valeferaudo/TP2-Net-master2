@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E1F941FF-8886-41AB-A33D-CD1FBFE32E0E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UI.Desktop</RootNamespace>
+    <AssemblyName>UI.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm.Designer.cs">
+      <DependentUpon>Abm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalificarInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalificarInscripcion.Designer.cs">
+      <DependentUpon>CalificarInscripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comisiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comisiones.Designer.cs">
+      <DependentUpon>Comisiones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComisionesDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComisionesDesktop.Designer.cs">
+      <DependentUpon>ComisionesDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cursos.Designer.cs">
+      <DependentUpon>Cursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CursosDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CursosDesktop.Designer.cs">
+      <DependentUpon>CursosDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Especialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Especialidades.Designer.cs">
+      <DependentUpon>Especialidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EspecialidadesDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EspecialidadesDesktop.Designer.cs">
+      <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMain.Designer.cs">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InscribirAlumnoMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InscribirAlumnoMateria.Designer.cs">
+      <DependentUpon>InscribirAlumnoMateria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlumnoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlumnoDesktop.Designer.cs">
+      <DependentUpon>AlumnoDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Materias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Materias.Designer.cs">
+      <DependentUpon>Materias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MateriasDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MateriasDesktop.Designer.cs">
+      <DependentUpon>MateriasDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planes.Designer.cs">
+      <DependentUpon>Planes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanesDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanesDesktop.Designer.cs">
+      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UsuarioDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsuarioDesktop.Designer.cs">
+      <DependentUpon>UsuarioDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Alumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alumnos.Designer.cs">
+      <DependentUpon>Alumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscripciones.Designer.cs">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CalificarInscripcion.resx">
+      <DependentUpon>CalificarInscripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comisiones.resx">
+      <DependentUpon>Comisiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComisionesDesktop.resx">
+      <DependentUpon>ComisionesDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cursos.resx">
+      <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CursosDesktop.resx">
+      <DependentUpon>CursosDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Especialidades.resx">
+      <DependentUpon>Especialidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EspecialidadesDesktop.resx">
+      <DependentUpon>EspecialidadesDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formMain.resx">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InscribirAlumnoMateria.resx">
+      <DependentUpon>InscribirAlumnoMateria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlumnoDesktop.resx">
+      <DependentUpon>AlumnoDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Materias.resx">
+      <DependentUpon>Materias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MateriasDesktop.resx">
+      <DependentUpon>MateriasDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planes.resx">
+      <DependentUpon>Planes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanesDesktop.resx">
+      <DependentUpon>PlanesDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioDesktop.resx">
+      <DependentUpon>UsuarioDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alumnos.resx">
+      <DependentUpon>Alumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscripciones.resx">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business.Entities\Business.Entities.csproj">
+      <Project>{eb9b6b65-d9b7-41f7-b687-430352039341}</Project>
+      <Name>Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Business.Logic\Business.Logic.csproj">
+      <Project>{8ce1547d-0300-4a8b-9c28-f769cb6f93e6}</Project>
+      <Name>Business.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
