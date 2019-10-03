@@ -107,7 +107,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@hs_sem", SqlDbType.Int).Value = materia.HSSemanales;
                 cmdSave.Parameters.Add("@hs_tot", SqlDbType.Int).Value = materia.HSTotales;
                 cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = materia.IDPlan;
-                
+                //prueba
 
                 cmdSave.ExecuteNonQuery();
             }
