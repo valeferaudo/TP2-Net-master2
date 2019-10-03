@@ -19,11 +19,13 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-        public Inscripciones(Personas alu) : this()
+        public Inscripciones(Personas alu, int ModoUsuario) : this()
         {
             alumno = alu;
+            int modo = ModoUsuario;
             this.Listar();
-            this.bloquearopciones();
+            this.bloquearopciones(modo);
+            
         }
         public void Listar()
         {
@@ -95,10 +97,10 @@ namespace UI.Desktop
                 this.Listar();
             }
         }
-        private void bloquearopciones()
+        private void bloquearopciones(int modo)
         {
             
-            if(alumno.TipoPersona == Personas.tipopersona.Alumno)
+            if(modo==1)
             {
                 this.toolStripButton1.Visible = false;
             }

@@ -104,7 +104,7 @@ namespace UI.Desktop
             {
                 int ID = ((Business.Entities.Personas)this.dgvAlumnos.SelectedRows[0].DataBoundItem).ID;
                 PersonaLogic psl = new PersonaLogic();
-                Inscripciones inscr = new Inscripciones(psl.GetOne(ID));
+                Inscripciones inscr = new Inscripciones(psl.GetOne(ID),2);
                 inscr.ShowDialog();
                 this.Listar();
             }

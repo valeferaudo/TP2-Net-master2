@@ -64,13 +64,16 @@ namespace UI.Desktop
         
         }
 
-       
+
 
         private void inscripcionesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+
+            
             PersonaLogic pl = new PersonaLogic();
-            Form insc = new Inscripciones(pl.GetOne(usuariologeado.IDPersona));
+            Form insc = new Inscripciones(pl.GetOne(usuariologeado.IDPersona),1);
             insc.Show();
+        
         }
 
         private void formMain_Load(object sender, EventArgs e)
