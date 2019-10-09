@@ -9,11 +9,10 @@ using Business.Logic;
 
 namespace UI.Web
 {
-    public partial class Usuarios : System.Web.UI.Page
-    {
-        
-        protected void Page_Load(object sender, EventArgs e)
-        {
+	public partial class Especialidades : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
             if (this.Page.IsPostBack)
             {
                 this.LoadGrid();
@@ -23,24 +22,22 @@ namespace UI.Web
                 this.LoadGrid();
             }
         }
-        private UsuarioLogic _Logic;
-
-        public UsuarioLogic Logic
+    EspecialidadLogic _especialidad;
+    private EspecialidadLogic Especialidad
         {
             get
             {
-                if (_Logic == null)
+                if(_especialidad == null)
                 {
-                    _Logic = new UsuarioLogic();
+                    _especialidad = new EspecialidadLogic();
                 }
-                return _Logic;
+                return _especialidad;
             }
-            set { _Logic = value; }
         }
         private void LoadGrid()
         {
-            this.gridView.DataSource = this.Logic.GetAll();
-            this.gridView.DataBind();
+            this.gridViewEspecialidad.DataSource = this.Especialidad.GetAll();
+            this.gridViewEspecialidad.DataBind();
         }
         public enum formModes
         {
@@ -54,7 +51,7 @@ namespace UI.Web
             get { return (formModes)this.ViewState["formMode"]; }
             set { this.ViewState["formMode"] = value; }
         }
-        private Usuario Entity
+        private Especialidad Entity
         {
             get;
             set;
@@ -89,16 +86,12 @@ namespace UI.Web
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.gridView.SelectedValue;
+            this.SelectedID = (int)this.gridViewEspecialidad.SelectedValue;
         }
         private void LoadForm(int ID)
         {
-            this.Entity = this.Logic.GetOne(ID);
-            this.nombreTextBox.Text = this.Entity.Nombre;
-            this.apellidoTextBox.Text = this.Entity.Apellido;
-            this.emailTextBox.Text = this.Entity.EMail;
-            this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
-            this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
+            this.Entity = this.Especialidad.GetOne(ID);
+            this.descripcionTextBox.Text = this.Entity.Descripcion;
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -111,20 +104,15 @@ namespace UI.Web
                 this.LoadForm(this.SelectedID);
             }
         }
-        private void LoadEntity(Usuario usuario)
+        private void LoadEntity(Especialidad espe)
         {
-            usuario.Nombre = this.nombreTextBox.Text;
-            usuario.Apellido = this.apellidoTextBox.Text;
-            usuario.EMail = this.emailTextBox.Text;
-            usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
-            usuario.Clave = this.claveTextBox.Text;
-            usuario.Habilitado = this.habilitadoCheckBox.Checked;
-            usuario.IDPersona = Int32.Parse(this.idPersonaTextBox.Text);
+            espe.Descripcion = this.descripcionTextBox.Text;
+            
         }
 
-        private void SaveEntity(Usuario usuario)
+        private void SaveEntity(Especialidad espe)
         {
-            this.Logic.Save(usuario);
+            this.Especialidad.Save(espe);
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
@@ -133,7 +121,7 @@ namespace UI.Web
             {
                 case formModes.Alta:
                     {
-                        this.Entity = new Usuario();
+                        this.Entity = new Especialidad();
                         this.Entity.State = BusinessEntity.States.New;
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
@@ -145,14 +133,14 @@ namespace UI.Web
                 case formModes.Baja:
                     {
                         //this.Entity.State = BusinessEntity.States.Deleted;
-                        //tira error
+                        //TIRA ERROR
                         this.DeleteEntity(this.SelectedID);
                         this.LoadGrid();
                     }
                     break;
                 case formModes.Modificacion:
                     {
-                        this.Entity = new Usuario();
+                        this.Entity = new Business.Entities.Especialidad();
                         this.Entity.ID = this.SelectedID;
                         this.Entity.State = BusinessEntity.States.Modified;
                         this.LoadEntity(this.Entity);
@@ -169,16 +157,9 @@ namespace UI.Web
         }
         private void EnableForm(bool enable)
         {
-            this.nombreTextBox.Enabled = enable;
-            this.apellidoTextBox.Enabled = enable;
-            this.emailTextBox.Enabled = enable;
-            this.nombreUsuarioTextBox.Enabled = enable;
-            this.claveTextBox.Enabled = enable;
-            this.claveLabel.Visible = enable;
-            this.repetirClaveTextBox.Enabled = enable;
-            this.repetirClaveLabel.Visible = enable;
-            this.idPersonaLabel.Visible = enable;
-            this.idPersonaTextBox.Enabled = enable;
+            this.descripcionTextBox.Enabled = enable;
+            this.descripcionLabel.Visible = enable;
+          
         }
 
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
@@ -193,7 +174,7 @@ namespace UI.Web
         }
         private void DeleteEntity(int ID)
         {
-            this.Logic.Delete(ID);
+            this.Especialidad.Delete(ID);
         }
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
@@ -205,12 +186,8 @@ namespace UI.Web
         }
         private void ClearForm()
         {
-            this.nombreTextBox.Text = string.Empty;
-            this.apellidoTextBox.Text = string.Empty;
-            this.emailTextBox.Text = string.Empty;
-            this.habilitadoCheckBox.Checked = false;
-            this.nombreUsuarioTextBox.Text = string.Empty;
-            this.idPersonaTextBox.Text = string.Empty;
+            this.descripcionTextBox.Text = string.Empty;
+            
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
@@ -218,7 +195,5 @@ namespace UI.Web
             this.formPanel.Visible = false;
             this.ClearForm();
         }
-
-        
     }
 }
