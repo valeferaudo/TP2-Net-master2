@@ -14,15 +14,23 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (this.Page.IsPostBack)
+            if (Session["UsuarioSesion"] == null)
             {
-                this.LoadGrid();
+                //Redirigir a login
+                Response.Redirect("~/Login.aspx");
             }
             else
             {
-                this.LoadGrid();
+                if (this.Page.IsPostBack)
+                {
+                    this.LoadGrid();
+                }
+                else
+                {
+                    this.LoadGrid();
+                }
+                LLenarDropEspecialidades();
             }
-            LLenarDropEspecialidades();
         }
         PlanLogic _plan;
         private PlanLogic Plan

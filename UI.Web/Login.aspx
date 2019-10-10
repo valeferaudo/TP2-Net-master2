@@ -6,6 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 152px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -13,26 +18,26 @@
         </div>
     <table style="width:100%;">
         <tr>
-            <td>&nbsp;</td>
+            <td class="auto-style1">&nbsp;</td>
             <td>Academia</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>Usuario</td>
+            <td class="auto-style1">Usuario</td>
             <td>
                 <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
             </td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>Clave</td>
+            <td class="auto-style1">Clave</td>
             <td>
                 <asp:TextBox ID="txtpassword" runat="server"></asp:TextBox>
             </td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>
+            <td class="auto-style1">
                 <asp:LinkButton ID="LinkButton1" runat="server">No recuerdo mi clave</asp:LinkButton>
             </td>
             <td>

@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="gridViewMaterias" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" 
+        MATERIAS:<asp:GridView ID="gridViewMaterias" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" />
@@ -23,12 +23,15 @@
     <asp:Panel ID="formPanel" Visible="false" runat="server">
         <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion"></asp:Label>
         <asp:TextBox ID="descripcionTextBox" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="descripcionTextBox" ErrorMessage="Ingrese Descripción" ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="hsSemanalesLabel" runat="server" Text="HS-Semanales"></asp:Label>
         <asp:TextBox ID="hsSemanalesTextBox" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="hsSemanalesTextBox" ErrorMessage="Ingrese Hs Semanales" ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="hsTotalesLabel" runat="server" Text="HS-Totales"></asp:Label>
         <asp:TextBox ID="hsTotalesTextBox" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="hsTotalesTextBox" ErrorMessage="Ingrese Hs Totales" ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="idPlanLabel" runat="server" Text="ID-Plan"></asp:Label>
         <asp:DropDownList ID="ddlPlanes" runat="server">
@@ -39,4 +42,5 @@
             <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
         </asp:Panel>
     </asp:Panel>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
 </asp:Content>

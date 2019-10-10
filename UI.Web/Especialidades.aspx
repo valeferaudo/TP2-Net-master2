@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="bodyContentPlaceHolder" runat="server">
     <asp:Panel ID="gridPanel" runat="server">
-        <asp:GridView ID="gridViewEspecialidad" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" 
+        ESPECIALIDADES<asp:GridView ID="gridViewEspecialidad" runat="server" AutoGenerateColumns="false" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" />
@@ -20,6 +20,7 @@
     <asp:Panel ID="formPanel" Visible="false" runat="server">
         <asp:Label ID="descripcionLabel" runat="server" Text="Descripcion"></asp:Label>
         <asp:TextBox ID="descripcionTextBox" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="descripcionTextBox" ErrorMessage="Ingrese Descripción" ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
         
         <asp:Panel ID="formActionsPanel" runat="server">
@@ -27,4 +28,5 @@
             <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
         </asp:Panel>
     </asp:Panel>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
 </asp:Content>
