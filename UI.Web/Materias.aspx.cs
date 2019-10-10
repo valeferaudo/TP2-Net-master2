@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -40,7 +41,31 @@ namespace UI.Web
         }
         private void LoadGrid()
         {
-            this.gridViewMaterias.DataSource = this.Materia.GetAll();
+            //this.gridViewMaterias.DataSource = this.Materia.GetAll();
+            //this.gridViewMaterias.DataBind();
+            PlanLogic pl = new PlanLogic();
+            DataTable dt = new DataTable();
+
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("ID", typeof(string));
+                dt.Columns.Add("Descripcion", typeof(string));
+                dt.Columns.Add("HSSemanales", typeof(string));
+                dt.Columns.Add("HSTotales", typeof(string));
+                dt.Columns.Add("IDPlan", typeof(string));
+            }
+            List<Materia> materias = this.Materia.GetAll();
+            foreach (Materia materia in materias)
+            {
+                DataRow NewRow = dt.NewRow();
+                NewRow[0] = Convert.ToString(materia.ID);
+                NewRow[1] = materia.Descripcion;
+                NewRow[2] = Convert.ToString(materia.HSSemanales);
+                NewRow[3] = Convert.ToString(materia.HSTotales);
+                NewRow[4] = pl.GetOne(materia.IDPlan).Descripcion;
+                dt.Rows.Add(NewRow);
+            }
+            this.gridViewMaterias.DataSource = dt;
             this.gridViewMaterias.DataBind();
         }
         public enum formModes
@@ -90,7 +115,7 @@ namespace UI.Web
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.gridViewMaterias.SelectedValue;
+            this.SelectedID = (int)Convert.ToInt32(this.gridViewMaterias.SelectedRow.Cells[0].Text);
         }
         private void LoadForm(int ID)
         {

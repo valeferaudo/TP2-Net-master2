@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,7 +40,29 @@ namespace UI.Web
         }
         private void LoadGrid()
         {
-            this.gridViewComisiones.DataSource = this.Comision.GetAll();
+            //this.gridViewComisiones.DataSource = this.Comision.GetAll();
+            //this.gridViewComisiones.DataBind();
+            PlanLogic pl = new PlanLogic();
+            DataTable dt = new DataTable();
+
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("ID", typeof(string));
+                dt.Columns.Add("Descripcion", typeof(string));
+                dt.Columns.Add("AnioEspecialidad", typeof(string));
+                dt.Columns.Add("IDPlan", typeof(string));
+            }
+            List<Comision> comisiones = this.Comision.GetAll();
+            foreach (Comision comision in comisiones)
+            {
+                DataRow NewRow = dt.NewRow();
+                NewRow[0] = Convert.ToString(comision.ID);
+                NewRow[1] = comision.Descripcion;
+                NewRow[2] = Convert.ToString(comision.AnioEspecialidad);
+                NewRow[3] = pl.GetOne(comision.IDPlan).Descripcion;
+                dt.Rows.Add(NewRow);
+            }
+            this.gridViewComisiones.DataSource = dt;
             this.gridViewComisiones.DataBind();
         }
         public enum formModes
@@ -89,7 +112,7 @@ namespace UI.Web
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.gridViewComisiones.SelectedValue;
+            this.SelectedID = (int)Convert.ToInt32(this.gridViewComisiones.SelectedRow.Cells[0].Text);
         }
         private void LoadForm(int ID)
         {
