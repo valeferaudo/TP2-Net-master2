@@ -22,7 +22,7 @@ namespace UI.Web
             {
                 this.LoadGrid();
             }
-
+            LLenarDropEspecialidades();
         }
         PlanLogic _plan;
         private PlanLogic Plan
@@ -117,7 +117,7 @@ namespace UI.Web
         {
             this.Entity = this.Plan.GetOne(ID);
             this.descripcionTextBox.Text = this.Entity.Descripcion;
-            this.idEspecialidadTextBox.Text = (this.Entity.IDEspecialidad).ToString();
+            this.ddlEspecialidades.SelectedValue = (this.Entity.IDEspecialidad).ToString();
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace UI.Web
         private void LoadEntity(Plan plan)
         {
             plan.Descripcion = this.descripcionTextBox.Text;
-            plan.IDEspecialidad = Int32.Parse(this.idEspecialidadTextBox.Text);
+            plan.IDEspecialidad = Int32.Parse(this.ddlEspecialidades.SelectedValue);
 
         }
         private void SaveEntity(Plan plan)
@@ -185,7 +185,7 @@ namespace UI.Web
         {
             this.descripcionTextBox.Enabled = enable;
             this.descripcionLabel.Visible = enable;
-            this.idEspecialidadTextBox.Enabled = enable;
+            this.ddlEspecialidades.Enabled = enable;
             this.idEspecialidadLabel.Visible = enable;
 
         }
@@ -215,7 +215,6 @@ namespace UI.Web
         private void ClearForm()
         {
             this.descripcionTextBox.Text = string.Empty;
-            this.idEspecialidadTextBox.Text = string.Empty;
 
         }
 
@@ -224,6 +223,20 @@ namespace UI.Web
             this.formPanel.Visible = false;
             this.ClearForm();
         }
-    }
 
+        public void LLenarDropEspecialidades()
+        {
+            EspecialidadLogic el = new EspecialidadLogic();
+            List<Especialidad> especialidades = el.GetAll();
+            foreach (Especialidad espe in especialidades)
+            {
+                ListItem item = new ListItem();
+                item.Text = espe.Descripcion;
+                item.Value = Convert.ToString(espe.ID);
+
+                ddlEspecialidades.Items.Add(item);
+            }
+        }
+
+    }
 }

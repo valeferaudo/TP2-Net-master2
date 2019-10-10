@@ -212,7 +212,6 @@ namespace UI.Web
         {
             PlanLogic pl = new PlanLogic();
             List<Plan> planes = pl.GetAll();
-            planes = pl.GetAll();
             foreach (Plan plan in planes)
             {
                 ListItem item = new ListItem();

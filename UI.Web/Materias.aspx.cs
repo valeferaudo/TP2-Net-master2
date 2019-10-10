@@ -21,6 +21,7 @@ namespace UI.Web
             {
                 this.LoadGrid();
             }
+            this.LlenarDropMateria();
         }
         private MateriaLogic _Materia;
 
@@ -97,8 +98,8 @@ namespace UI.Web
             this.descripcionTextBox.Text = this.Entity.Descripcion;
             this.hsSemanalesTextBox.Text = (this.Entity.HSSemanales).ToString();
             this.hsTotalesTextBox.Text = (this.Entity.HSTotales).ToString();
-            this.idPlanTextBox.Text = (this.Entity.IDPlan).ToString();
-            
+            this.ddlPlanes.SelectedValue = (this.Entity.IDPlan).ToString();
+
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -116,8 +117,8 @@ namespace UI.Web
             materia.Descripcion = this.descripcionTextBox.Text;
             materia.HSSemanales = Int32.Parse(this.hsSemanalesTextBox.Text);
             materia.HSTotales = Int32.Parse(this.hsTotalesTextBox.Text);
-            materia.IDPlan = Int32.Parse(this.idPlanTextBox.Text);
-          
+            materia.IDPlan = Int32.Parse(this.ddlPlanes.SelectedValue);
+
         }
 
         private void SaveEntity(Materia materia)
@@ -170,7 +171,7 @@ namespace UI.Web
             this.descripcionTextBox.Enabled = enable;
             this.hsSemanalesTextBox.Enabled = enable;
             this.hsTotalesTextBox.Enabled = enable;
-            this.idPlanTextBox.Enabled = enable;
+            this.ddlPlanes.Enabled = enable;
             this.descripcionLabel.Visible = enable;
             this.hsSemanalesLabel.Enabled = enable;
             this.hsTotalesLabel.Visible = enable;
@@ -204,13 +205,27 @@ namespace UI.Web
             this.descripcionTextBox.Text = string.Empty;
             this.hsSemanalesTextBox.Text = string.Empty;
             this.hsTotalesTextBox.Text = string.Empty;
-            this.idPlanTextBox.Text = string.Empty;
+            
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
             this.formPanel.Visible = false;
             this.ClearForm();
+        }
+
+        public void LlenarDropMateria()
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = pl.GetAll();
+            foreach (Plan plan in planes)
+            {
+                ListItem item = new ListItem();
+                item.Text = plan.Descripcion;
+                item.Value = Convert.ToString(plan.ID);
+
+                ddlPlanes.Items.Add(item);
+            }
         }
     }
 }

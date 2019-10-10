@@ -22,6 +22,7 @@ namespace UI.Web
             {
                 this.LoadGrid();
             }
+            LlenarDropPersonas();
         }
         private UsuarioLogic _Logic;
 
@@ -99,6 +100,7 @@ namespace UI.Web
             this.emailTextBox.Text = this.Entity.EMail;
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
+            this.ddlPersona.SelectedValue = (this.Entity.IDPersona).ToString();
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -119,7 +121,7 @@ namespace UI.Web
             usuario.NombreUsuario = this.nombreUsuarioTextBox.Text;
             usuario.Clave = this.claveTextBox.Text;
             usuario.Habilitado = this.habilitadoCheckBox.Checked;
-            usuario.IDPersona = Int32.Parse(this.idPersonaTextBox.Text);
+            usuario.IDPersona = Int32.Parse(this.ddlPersona.SelectedValue);
         }
 
         private void SaveEntity(Usuario usuario)
@@ -178,7 +180,7 @@ namespace UI.Web
             this.repetirClaveTextBox.Enabled = enable;
             this.repetirClaveLabel.Visible = enable;
             this.idPersonaLabel.Visible = enable;
-            this.idPersonaTextBox.Enabled = enable;
+            this.ddlPersona.Enabled = enable;
         }
 
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
@@ -210,7 +212,7 @@ namespace UI.Web
             this.emailTextBox.Text = string.Empty;
             this.habilitadoCheckBox.Checked = false;
             this.nombreUsuarioTextBox.Text = string.Empty;
-            this.idPersonaTextBox.Text = string.Empty;
+            
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
@@ -219,6 +221,19 @@ namespace UI.Web
             this.ClearForm();
         }
 
+        public void LlenarDropPersonas()
+        {
+            PersonaLogic pl = new PersonaLogic();
+            List<Personas> personas = pl.GetAll();
+            foreach (Personas persona in personas)
+            {
+                ListItem item = new ListItem();
+                item.Text = persona.Nombre + " " + persona.Apellido;
+                item.Value = Convert.ToString(persona.ID);
+
+                ddlPersona.Items.Add(item);
+            }
+        }
         
     }
 }

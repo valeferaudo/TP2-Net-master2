@@ -23,7 +23,8 @@
         <asp:TextBox ID="descripcionTextBox" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="idEspecialidadLabel" runat="server" Text="Especialidad"></asp:Label>
-        <asp:TextBox ID="idEspecialidadTextBox" runat="server"></asp:TextBox>
+        <asp:DropDownList ID="ddlEspecialidades" runat="server">
+        </asp:DropDownList>
         <br />
         <asp:Panel ID="formActionsPanel" runat="server">
             <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>

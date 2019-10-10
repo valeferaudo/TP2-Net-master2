@@ -14,17 +14,11 @@
                 <asp:CommandField SelectText="Seleccionar" ShowSelectButton="true" />
             </Columns>
         </asp:GridView>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="apellidoTextBox" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="claveTextBox" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
         <asp:Panel ID="gridActionsPanel" runat="server">
             <asp:LinkButton ID="editarLinkButton" runat="server" OnClick="editarLinkButton_Click">Editar</asp:LinkButton>
             <asp:LinkButton ID="eliminarLinkButton" runat="server" OnClick="eliminarLinkButton_Click">Eliminar</asp:LinkButton>
             <asp:LinkButton ID="nuevoLinkButton" runat="server" OnClick="nuevoLinkButton_Click">Nuevo</asp:LinkButton>
         </asp:Panel>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="emailTextBox" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="nombreTextBox" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="nombreUsuarioTextBox" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="repetirClaveTextBox" ErrorMessage="RequiredFieldValidator"></asp:RequiredFieldValidator>
     </asp:Panel>
     <asp:Panel ID="formPanel" Visible="false" runat="server">
         <asp:Label ID="nombreLabel" runat="server" Text="Nombre"></asp:Label>
@@ -39,8 +33,9 @@
         <asp:Label ID="habilitadoLabel" runat="server" Text="Habilitado"></asp:Label>
         <asp:CheckBox ID="habilitadoCheckBox" runat="server" />
         <br />
-        <asp:Label ID="idPersonaLabel" runat="server" Text="ID-Persona"></asp:Label>
-        <asp:TextBox ID="idPersonaTextBox" runat="server"></asp:TextBox>
+        <asp:Label ID="idPersonaLabel" runat="server" Text="Persona"></asp:Label>
+        <asp:DropDownList ID="ddlPersona" runat="server">
+        </asp:DropDownList>
         <br />
         <asp:Label ID="nombreUsuarioLabel" runat="server" Text="Usuario"></asp:Label>
         <asp:TextBox ID="nombreUsuarioTextBox" runat="server"></asp:TextBox>
