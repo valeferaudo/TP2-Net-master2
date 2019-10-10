@@ -25,10 +25,12 @@ namespace UI.Web
                 if (usuario.ID > 0)
                 {
                     Page.Response.Write("Login OK");
+                    Session["UsuarioSesion"] = usuario;
+                    Response.Redirect("~/Default.aspx");
                 }
                 else
                 {
-                    Page.Response.Write("Error");
+                    Page.Response.Write("Usuario o clave incorrectos");
                 }
             }
             else
