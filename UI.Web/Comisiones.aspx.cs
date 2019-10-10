@@ -21,6 +21,7 @@ namespace UI.Web
             {
                 this.LoadGrid();
             }
+            this.LlenarDropPlanes();
         }
         private ComisionLogic _Comision;
 
@@ -95,7 +96,7 @@ namespace UI.Web
             this.Entity = this.Comision.GetOne(ID);
             this.descripcionTextBox.Text = this.Entity.Descripcion;
             this.anioEspecialidadTextBox.Text = (this.Entity.AnioEspecialidad).ToString();
-            this.idPlanTextBox.Text = (this.Entity.IDPlan).ToString();
+            this.DropDownList1.SelectedValue = (this.Entity.IDPlan).ToString();
          
         }
 
@@ -113,7 +114,7 @@ namespace UI.Web
         {
             comision.Descripcion = this.descripcionTextBox.Text;
             comision.AnioEspecialidad = Int32.Parse(this.anioEspecialidadTextBox.Text);
-            comision.IDPlan = Int32.Parse(this.idPlanTextBox.Text);
+            comision.IDPlan = Int32.Parse(this.DropDownList1.SelectedValue);
         }
 
         private void SaveEntity(Comision comision)
@@ -165,7 +166,7 @@ namespace UI.Web
         {
             this.descripcionTextBox.Enabled = enable;
             this.anioEspecialidadTextBox.Enabled = enable;
-            this.idPlanTextBox.Enabled = enable;
+            this.DropDownList1.Enabled = enable;
             this.descripcionLabel.Visible = enable;
             this.anioEspecialidadLabel.Enabled = enable;
             this.idPlanLabel.Visible = enable;
@@ -198,7 +199,7 @@ namespace UI.Web
         {
             this.descripcionTextBox.Text = string.Empty;
             this.anioEspecialidadTextBox.Text = string.Empty;
-            this.idPlanTextBox.Text = string.Empty;
+            
             
         }
 
@@ -206,6 +207,20 @@ namespace UI.Web
         {
             this.formPanel.Visible = false;
             this.ClearForm();
+        }
+        private void LlenarDropPlanes()
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = pl.GetAll();
+            planes = pl.GetAll();
+            foreach (Plan plan in planes)
+            {
+                ListItem item = new ListItem();
+                item.Text = plan.Descripcion;
+                item.Value = Convert.ToString(plan.ID);
+
+                DropDownList1.Items.Add(item);
+            }
         }
     }
 }

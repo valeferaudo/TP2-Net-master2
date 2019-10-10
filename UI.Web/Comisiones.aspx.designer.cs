@@ -121,13 +121,13 @@ namespace UI.Web {
         protected global::System.Web.UI.WebControls.Label idPlanLabel;
         
         /// <summary>
-        /// Control idPlanTextBox.
+        /// Control DropDownList1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox idPlanTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
         /// Control formActionsPanel.

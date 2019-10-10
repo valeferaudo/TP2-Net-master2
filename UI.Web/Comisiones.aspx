@@ -27,7 +27,8 @@
         <asp:TextBox ID="anioEspecialidadTextBox" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="idPlanLabel" runat="server" Text="Plan"></asp:Label>
-        <asp:TextBox ID="idPlanTextBox" runat="server"></asp:TextBox>
+        <asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
         <br />
         <asp:Panel ID="formActionsPanel" runat="server">
             <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
