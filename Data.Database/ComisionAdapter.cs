@@ -150,7 +150,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "UPDATE usuarios SET desc_comision = @desc, anio_especialidad = @anio, " + "id_plan = @id_plan " + "WHERE id_comision=@id", sqlConn);
+                    "UPDATE comisiones SET desc_comision = @desc, anio_especialidad = @anio, " + "id_plan = @id_plan " + "WHERE id_comision=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = comision.ID;
                 cmdSave.Parameters.Add("@desc", SqlDbType.VarChar).Value = comision.Descripcion;
                 cmdSave.Parameters.Add("@anio", SqlDbType.Int).Value = comision.AnioEspecialidad;
