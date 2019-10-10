@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business.Logic;
 using Business.Entities;
+using System.Data;
 
 namespace UI.Web
 {
@@ -37,8 +38,31 @@ namespace UI.Web
         }
         private void LoadGrid()
         {
-            this.gridViewPlan.DataSource = this.Plan.GetAll();
+            //this.gridViewPlan.DataSource = this.Plan.GetAll();
+            //this.gridViewPlan.DataBind();
+            PlanLogic pl = new PlanLogic();
+            EspecialidadLogic el = new EspecialidadLogic();
+            DataTable dt = new DataTable();
+
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("ID", typeof(string));
+                dt.Columns.Add("Descripcion", typeof(string));
+                dt.Columns.Add("IDEspecialidad", typeof(string));
+            }
+            List<Plan> planes = pl.GetAll();
+            foreach (Plan plan in planes)
+            {
+                DataRow NewRow = dt.NewRow();
+                NewRow[0] = Convert.ToString(plan.ID);
+                NewRow[1] = plan.Descripcion;
+                NewRow[2] = el.GetOne(plan.IDEspecialidad).Descripcion;
+                dt.Rows.Add(NewRow);
+            }
+            this.gridViewPlan.DataSource = dt;
             this.gridViewPlan.DataBind();
+
+
         }
         public enum formModes
         {
@@ -87,7 +111,7 @@ namespace UI.Web
 
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedID = (int)this.gridViewPlan.SelectedValue;
+            this.SelectedID = (int)Convert.ToInt32(this.gridViewPlan.SelectedRow.Cells[0].Text);
         }
         private void LoadForm(int ID)
         {
