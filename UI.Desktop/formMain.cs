@@ -96,7 +96,7 @@ namespace UI.Desktop
                     this.especialidadesToolStripMenuItem.Visible = false;
                     this.comisionesToolStripMenuItem.Visible = false;
                     this.materiasToolStripMenuItem.Visible = false;
-                    this.cursosToolStripMenuItem.Visible = false;
+                    
                 }
                 if (per.TipoPersona == Personas.tipopersona.Docente)
                 {
@@ -107,7 +107,7 @@ namespace UI.Desktop
                     this.planesToolStripMenuItem.Visible = false;
                     this.comisionesToolStripMenuItem.Visible = false;
                     this.materiasToolStripMenuItem.Visible = false;
-                    this.cursosToolStripMenuItem.Visible = false;
+                    
                 }
                 if (per.TipoPersona == Personas.tipopersona.Admin)
                 {
@@ -146,10 +146,24 @@ namespace UI.Desktop
             FormMateria.ShowDialog();
         }
 
-        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+             
+
+        private void reportePlanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form reportePlan = new FormReportePlan();
+            reportePlan.ShowDialog();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form FormCurso = new Cursos();
             FormCurso.ShowDialog();
+        }
+
+        private void reporteCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form reporteCurso = new FormReporteCurso();
+            reporteCurso.ShowDialog();
         }
     }
 }

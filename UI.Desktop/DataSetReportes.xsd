@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PlanesReporte" targetNamespace="http://tempuri.org/PlanesReporte.xsd" xmlns:mstns="http://tempuri.org/PlanesReporte.xsd" xmlns="http://tempuri.org/PlanesReporte.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="tp2_netConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="tp2_netConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.UI.Desktop.Properties.Settings.GlobalReference.Default.tp2_netConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PlanesReporteTableAdapter" GeneratorDataComponentClassName="PlanesReporteTableAdapter" Name="PlanesReporte" UserDataComponentName="PlanesReporteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="tp2_netConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        planes.id_plan, planes.desc_plan, especialidades.desc_especialidad
+FROM            planes INNER JOIN
+                         especialidades ON planes.id_especialidad = especialidades.id_especialidad</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_plan" DataSetColumn="id_plan" />
+              <Mapping SourceColumn="desc_plan" DataSetColumn="desc_plan" />
+              <Mapping SourceColumn="desc_especialidad" DataSetColumn="desc_especialidad" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CursosReporteTableAdapter" GeneratorDataComponentClassName="CursosReporteTableAdapter" Name="CursosReporte" UserDataComponentName="CursosReporteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="tp2_netConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        cursos.id_curso, cursos.anio_calendario, cursos.cupo, cursos.descripcion, materias.desc_materia, comisiones.desc_comision
+FROM            cursos INNER JOIN
+                         materias ON cursos.id_materia = materias.id_materia INNER JOIN
+                         comisiones ON cursos.id_comision = comisiones.id_comision</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_curso" DataSetColumn="id_curso" />
+              <Mapping SourceColumn="anio_calendario" DataSetColumn="anio_calendario" />
+              <Mapping SourceColumn="cupo" DataSetColumn="cupo" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="desc_materia" DataSetColumn="desc_materia" />
+              <Mapping SourceColumn="desc_comision" DataSetColumn="desc_comision" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PlanesReporte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PlanesReporte" msprop:Generator_UserDSName="PlanesReporte">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PlanesReporte" msprop:Generator_TableClassName="PlanesReporteDataTable" msprop:Generator_TableVarName="tablePlanesReporte" msprop:Generator_TablePropName="_PlanesReporte" msprop:Generator_RowDeletingName="PlanesReporteRowDeleting" msprop:Generator_RowChangingName="PlanesReporteRowChanging" msprop:Generator_RowEvHandlerName="PlanesReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="PlanesReporteRowDeleted" msprop:Generator_UserTableName="PlanesReporte" msprop:Generator_RowChangedName="PlanesReporteRowChanged" msprop:Generator_RowEvArgName="PlanesReporteRowChangeEvent" msprop:Generator_RowClassName="PlanesReporteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_plan" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_plan" msprop:Generator_ColumnPropNameInRow="id_plan" msprop:Generator_ColumnPropNameInTable="id_planColumn" msprop:Generator_UserColumnName="id_plan" type="xs:int" />
+              <xs:element name="desc_plan" msprop:Generator_ColumnVarNameInTable="columndesc_plan" msprop:Generator_ColumnPropNameInRow="desc_plan" msprop:Generator_ColumnPropNameInTable="desc_planColumn" msprop:Generator_UserColumnName="desc_plan">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="desc_especialidad" msprop:Generator_ColumnVarNameInTable="columndesc_especialidad" msprop:Generator_ColumnPropNameInRow="desc_especialidad" msprop:Generator_ColumnPropNameInTable="desc_especialidadColumn" msprop:Generator_UserColumnName="desc_especialidad">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CursosReporte" msprop:Generator_TableClassName="CursosReporteDataTable" msprop:Generator_TableVarName="tableCursosReporte" msprop:Generator_TablePropName="CursosReporte" msprop:Generator_RowDeletingName="CursosReporteRowDeleting" msprop:Generator_RowChangingName="CursosReporteRowChanging" msprop:Generator_RowEvHandlerName="CursosReporteRowChangeEventHandler" msprop:Generator_RowDeletedName="CursosReporteRowDeleted" msprop:Generator_UserTableName="CursosReporte" msprop:Generator_RowChangedName="CursosReporteRowChanged" msprop:Generator_RowEvArgName="CursosReporteRowChangeEvent" msprop:Generator_RowClassName="CursosReporteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_curso" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_curso" msprop:Generator_ColumnPropNameInRow="id_curso" msprop:Generator_ColumnPropNameInTable="id_cursoColumn" msprop:Generator_UserColumnName="id_curso" type="xs:int" />
+              <xs:element name="anio_calendario" msprop:Generator_ColumnVarNameInTable="columnanio_calendario" msprop:Generator_ColumnPropNameInRow="anio_calendario" msprop:Generator_ColumnPropNameInTable="anio_calendarioColumn" msprop:Generator_UserColumnName="anio_calendario" type="xs:int" />
+              <xs:element name="cupo" msprop:Generator_ColumnVarNameInTable="columncupo" msprop:Generator_ColumnPropNameInRow="cupo" msprop:Generator_ColumnPropNameInTable="cupoColumn" msprop:Generator_UserColumnName="cupo" type="xs:int" />
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="desc_materia" msprop:Generator_ColumnVarNameInTable="columndesc_materia" msprop:Generator_ColumnPropNameInRow="desc_materia" msprop:Generator_ColumnPropNameInTable="desc_materiaColumn" msprop:Generator_UserColumnName="desc_materia">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="desc_comision" msprop:Generator_ColumnVarNameInTable="columndesc_comision" msprop:Generator_ColumnPropNameInRow="desc_comision" msprop:Generator_ColumnPropNameInTable="desc_comisionColumn" msprop:Generator_UserColumnName="desc_comision">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PlanesReporte" />
+      <xs:field xpath="mstns:id_plan" />
+    </xs:unique>
+    <xs:unique name="CursosReporte_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CursosReporte" />
+      <xs:field xpath="mstns:id_curso" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
