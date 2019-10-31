@@ -189,6 +189,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            this.gridViewEspecialidad.SelectedIndex = 1000 ;
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
