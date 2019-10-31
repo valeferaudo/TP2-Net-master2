@@ -95,6 +95,8 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridViewEspecialidad.SelectedValue;
+            this.formPanel.Visible = false;
+            this.ClearForm();
         }
         private void LoadForm(int ID)
         {

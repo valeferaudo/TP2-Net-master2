@@ -29,7 +29,7 @@ namespace UI.Web
                 {
                     this.LoadGrid();
                 }
-                LlenarDropPersonas();
+                //LlenarDropPersonas();
             }
         }
         private UsuarioLogic _Logic;
@@ -99,6 +99,9 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
+            this.ddlPersona.Items.Clear();
+            this.formPanel.Visible = false;
+            this.ClearForm();
         }
         private void LoadForm(int ID)
         {
@@ -115,6 +118,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
+                LlenarDropPersonas();
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -139,6 +143,7 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
+            this.ddlPersona.Items.Clear();
             switch (this.formMode)
             {
                 case formModes.Alta:
@@ -208,6 +213,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            LlenarDropPersonas();
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
@@ -225,6 +231,7 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+            this.ddlPersona.Items.Clear();
             this.formPanel.Visible = false;
             this.ClearForm();
         }

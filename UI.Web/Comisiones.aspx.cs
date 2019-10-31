@@ -29,7 +29,7 @@ namespace UI.Web
                 {
                     this.LoadGrid();
                 }
-                this.LlenarDropPlanes();
+               // this.LlenarDropPlanes();
             }
         }
         private ComisionLogic _Comision;
@@ -121,6 +121,9 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)Convert.ToInt32(this.gridViewComisiones.SelectedRow.Cells[0].Text);
+            this.DropDownList1.Items.Clear();
+            this.formPanel.Visible = false;
+            this.ClearForm();
         }
         private void LoadForm(int ID)
         {
@@ -135,6 +138,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
+                this.LlenarDropPlanes();
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -155,6 +159,7 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
+            this.DropDownList1.Items.Clear();
             switch (this.formMode)
             {
                 case formModes.Alta:
@@ -221,6 +226,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            this.LlenarDropPlanes();
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
@@ -230,13 +236,13 @@ namespace UI.Web
         {
             this.descripcionTextBox.Text = string.Empty;
             this.anioEspecialidadTextBox.Text = string.Empty;
-            
+                       
             
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-
+            this.DropDownList1.Items.Clear();
             this.formPanel.Visible = false;
             this.ClearForm();
         }
