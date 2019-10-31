@@ -236,6 +236,7 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
+
             this.formPanel.Visible = false;
             this.ClearForm();
         }

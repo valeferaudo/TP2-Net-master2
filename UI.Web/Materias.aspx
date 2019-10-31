@@ -28,10 +28,12 @@
         <asp:Label ID="hsSemanalesLabel" runat="server" Text="HS-Semanales"></asp:Label>
         <asp:TextBox ID="hsSemanalesTextBox" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="hsSemanalesTextBox" ErrorMessage="Ingrese Hs Semanales" ForeColor="Red">*</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="hsSemanalesTextBox" ErrorMessage="Ingrese hs" ForeColor="Red" ValidationExpression="^\d+$">*</asp:RegularExpressionValidator>
         <br />
         <asp:Label ID="hsTotalesLabel" runat="server" Text="HS-Totales"></asp:Label>
         <asp:TextBox ID="hsTotalesTextBox" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="hsTotalesTextBox" ErrorMessage="Ingrese Hs Totales" ForeColor="Red">*</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="hsTotalesTextBox" ErrorMessage="Ingrese hs" ForeColor="Red" ValidationExpression="^\d+$">*</asp:RegularExpressionValidator>
         <br />
         <asp:Label ID="idPlanLabel" runat="server" Text="ID-Plan"></asp:Label>
         <asp:DropDownList ID="ddlPlanes" runat="server">
@@ -39,7 +41,7 @@
         <br />
         <asp:Panel ID="formActionsPanel" runat="server">
             <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
-            <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
+            <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
         </asp:Panel>
     </asp:Panel>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />

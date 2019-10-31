@@ -27,6 +27,7 @@
         <asp:Label ID="anioEspecialidadLabel" runat="server" Text="Año Especialidad"></asp:Label>
         <asp:TextBox ID="anioEspecialidadTextBox" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="anioEspecialidadTextBox" ErrorMessage="Ingrese Año Especialidad" ForeColor="Red">*</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Ingrese un año" ValidationExpression="^\d+$" ControlToValidate="anioEspecialidadTextBox" ForeColor="Red">*</asp:RegularExpressionValidator>
         <br />
         <asp:Label ID="idPlanLabel" runat="server" Text="Plan"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server">
@@ -34,7 +35,7 @@
         <br />
         <asp:Panel ID="formActionsPanel" runat="server">
             <asp:LinkButton ID="aceptarLinkButton" runat="server" OnClick="aceptarLinkButton_Click">Aceptar</asp:LinkButton>
-            <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click">Cancelar</asp:LinkButton>
+            <asp:LinkButton ID="cancelarLinkButton" runat="server" OnClick="cancelarLinkButton_Click" CausesValidation="False">Cancelar</asp:LinkButton>
         </asp:Panel>
     </asp:Panel>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />

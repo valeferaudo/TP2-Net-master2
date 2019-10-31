@@ -25,7 +25,7 @@ namespace Util
             return result;
         }
         public bool EsMail(string email)
-        {
+        { //hacerlo con expresion regular
             try
             {
                 MailAddress m = new MailAddress(email);
