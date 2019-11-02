@@ -13,5 +13,10 @@ namespace UI.Web
         {
 
         }
+
+        protected void Menu_MenuItemClick(object sender, MenuEventArgs e)
+        {
+
+        }
     }
 }

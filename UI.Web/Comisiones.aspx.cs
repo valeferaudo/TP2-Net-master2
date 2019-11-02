@@ -177,6 +177,7 @@ namespace UI.Web
                     {
                         //this.Entity.State = BusinessEntity.States.Deleted;
                         //tira error
+                        //Hay que usar borrado logico
                         this.DeleteEntity(this.SelectedID);
                         this.LoadGrid();
                     }
