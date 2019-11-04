@@ -96,6 +96,7 @@ namespace UI.Desktop
                     this.especialidadesToolStripMenuItem.Visible = false;
                     this.comisionesToolStripMenuItem.Visible = false;
                     this.materiasToolStripMenuItem.Visible = false;
+                    this.toolStripMenuItem1.Visible = false;
                     
                 }
                 if (per.TipoPersona == Personas.tipopersona.Docente)
@@ -107,6 +108,7 @@ namespace UI.Desktop
                     this.planesToolStripMenuItem.Visible = false;
                     this.comisionesToolStripMenuItem.Visible = false;
                     this.materiasToolStripMenuItem.Visible = false;
+                    this.toolStripMenuItem1.Visible = false;
                     
                 }
                 if (per.TipoPersona == Personas.tipopersona.Admin)
