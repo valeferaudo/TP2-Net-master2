@@ -9,7 +9,7 @@ namespace Util
 {
     public class ValidacionIngresoDatos
     {
-        public bool EsNumero(String strnro)
+        public static bool EsNumero(String strnro)
         {
             int nro = 0;
             bool result;
@@ -24,7 +24,7 @@ namespace Util
             }
             return result;
         }
-        public bool EsMail(string email)
+        public static bool EsMail(string email)
         { //hacerlo con expresion regular
             try
             {

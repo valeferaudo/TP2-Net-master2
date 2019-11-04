@@ -15,7 +15,13 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.LoadGrid();
+            PersonaLogic pl = new PersonaLogic();
+            Usuario usuario = (Usuario)Session["UsuarioSesion"];
+            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin) && !(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Docente))
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+                this.LoadGrid();
             if (!IsPostBack)
             {
                 this.Panel1.Visible = false;
@@ -224,6 +230,26 @@ namespace UI.Web
                 Calendar1.SelectedDate = Entity.FechaNacimiento;
                 DropDownListPlan.Enabled = false;
                 DropDownListPlan.Visible = false;
+            }
+        }
+
+        protected void btnInscripciones_Click(object sender, EventArgs e)
+        {
+            if (SelectedID > 0)
+            {
+                PersonaLogic pl = new PersonaLogic();
+                UsuarioLogic ul = new UsuarioLogic();
+                Usuario usuarioalumno=null;
+                List<Usuario> usuarios = ul.GetAll();
+                foreach(Usuario usuario in usuarios)
+                {
+                    if(usuario.IDPersona == SelectedID)
+                    {
+                        usuarioalumno = usuario;
+                    }
+                }
+                Session["AlumnoInscSel"] = usuarioalumno;
+                Response.Redirect("~/Inscripciones.aspx");
             }
         }
     }

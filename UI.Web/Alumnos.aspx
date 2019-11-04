@@ -24,7 +24,7 @@
         <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" OnClick="btnNuevo_Click" />
         <asp:Button ID="btnEditar" runat="server" Text="Editar" OnClick="btnEditar_Click" />
         <asp:Button ID="btnEliminar" runat="server" OnClick="Button3_Click" Text="Eliminar" />
-        <asp:Button ID="btnInscripciones" runat="server" Text="Inscripciones" />
+        <asp:Button ID="btnInscripciones" runat="server" Text="Inscripciones" OnClick="btnInscripciones_Click" />
         <asp:Panel ID="Panel1" runat="server">
             <table style="width:100%;">
                 <tr>

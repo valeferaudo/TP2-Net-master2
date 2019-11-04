@@ -31,6 +31,12 @@ namespace UI.Web
                 }
                 //LlenarDropPersonas();
             }
+            PersonaLogic pl = new PersonaLogic();
+            Usuario usuario = (Usuario)Session["UsuarioSesion"];
+            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin) && !(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Docente))
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
         private UsuarioLogic _Logic;
 

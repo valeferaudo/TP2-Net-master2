@@ -71,6 +71,7 @@
     <Content Include="Comisiones.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Especialidades.aspx" />
+    <Content Include="Inscripciones.aspx" />
     <Content Include="Materias.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="Site.Master" />
@@ -81,7 +82,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Usuarios.aspx" />
-    <Content Include="Web.sitemap" />
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -119,6 +122,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripciones.aspx.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inscripciones.aspx.designer.cs">
+      <DependentUpon>Inscripciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

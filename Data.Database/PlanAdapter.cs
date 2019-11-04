@@ -68,7 +68,7 @@ namespace Data.Database
             try { 
                 this.OpenConnection();
                 
-                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes", sqlConn);
+                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes where deleted is null", sqlConn);
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
                 while (drPlanes.Read())
                 {
@@ -125,7 +125,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("DELETE planes where id_plan=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("UPDATE planes SET deleted = 1 where id_plan=@id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
 
