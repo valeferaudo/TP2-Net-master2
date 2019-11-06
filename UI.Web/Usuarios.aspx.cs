@@ -118,7 +118,22 @@ namespace UI.Web
             this.emailTextBox.Text = this.Entity.EMail;
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
-            this.ddlPersona.SelectedValue = (this.Entity.IDPersona).ToString();
+            PersonaLogic pl = new PersonaLogic();
+            List<Personas> personas = pl.GetAll();
+            Personas persona = pl.GetOne(Entity.IDPersona);
+            bool contiene = false;//Verificar que no este borrado logico, si esta borrado, no setear dropdown
+            foreach (Personas perso in personas)
+            {
+                if (perso.ID == persona.ID)
+                {
+                    contiene = true;
+                }
+            }
+            if (contiene)
+            {
+                this.ddlPersona.SelectedValue = (this.Entity.IDPersona).ToString();
+            }
+            
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)

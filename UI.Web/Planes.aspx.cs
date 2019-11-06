@@ -136,7 +136,22 @@ namespace UI.Web
         {
             this.Entity = this.Plan.GetOne(ID);
             this.descripcionTextBox.Text = this.Entity.Descripcion;
-            this.ddlEspecialidades.SelectedValue = (this.Entity.IDEspecialidad).ToString();
+            EspecialidadLogic el = new EspecialidadLogic();
+            List<Especialidad> especialidades = el.GetAll();
+            Especialidad especialidad = el.GetOne(Entity.IDEspecialidad);
+            bool contiene = false;//Verificar que no este borrado logico, si esta borrado, no setear dropdown
+            foreach (Especialidad espe in especialidades)
+            {
+                if (espe.ID == especialidad.ID)
+                {
+                    contiene = true;
+                }
+            }
+            if (contiene)
+            {
+                this.ddlEspecialidades.SelectedValue = (this.Entity.IDEspecialidad).ToString();
+            }
+            
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)

@@ -142,7 +142,22 @@ namespace UI.Web
             this.descripcionTextBox.Text = this.Entity.Descripcion;
             this.hsSemanalesTextBox.Text = (this.Entity.HSSemanales).ToString();
             this.hsTotalesTextBox.Text = (this.Entity.HSTotales).ToString();
-            this.ddlPlanes.SelectedValue = (this.Entity.IDPlan).ToString();
+            PlanLogic pl = new PlanLogic();
+            List<Plan> planes = pl.GetAll();
+            Plan plan = pl.GetOne(Entity.IDPlan);
+            bool contiene = false;//Verificar que no este borrado logico, si esta borrado, no setear dropdown
+            foreach (Plan pla in planes)
+            {
+                if (pla.ID == plan.ID)
+                {
+                    contiene = true;
+                }
+            }
+            if (contiene)
+            {
+                this.ddlPlanes.SelectedValue = (this.Entity.IDPlan).ToString();
+            }
+            
 
         }
 
