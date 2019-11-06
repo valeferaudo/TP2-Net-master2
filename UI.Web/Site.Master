@@ -11,14 +11,11 @@
 </head>
 <body>
     <form id="bodyForm" runat="server">
-            <asp:Menu runat="server" ID="Menu" DataSourceID="SiteMapDataSource">
+            <asp:Menu runat="server" ID="Menu" DataSourceID="SiteMapDataSource" BackColor="White" BorderColor="#CCFFFF">
+                <DynamicMenuStyle BackColor="#CCFFFF" />
             </asp:Menu>
             <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
-            <br />
-            <br />
-            <br />
-            <br />
-        <div>
+            <div>
             <asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>
