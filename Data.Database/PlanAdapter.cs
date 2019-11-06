@@ -68,7 +68,7 @@ namespace Data.Database
             try { 
                 this.OpenConnection();
                 
-                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes", sqlConn);
+                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes where deleted is null", sqlConn);
                 SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
                 while (drPlanes.Read())
                 {
@@ -88,7 +88,29 @@ namespace Data.Database
             this.CloseConnection();
             return planes;
         }
+        public DataTable ReportePlan()
+        {
+            DataSet reporte = new DataSet();
+            DataTable dt = new DataTable();
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("id_plan", typeof(int));
+                dt.Columns.Add("desc_plan", typeof(string));
+                dt.Columns.Add("desc_especialidad", typeof(string));
 
+            }
+            List<Plan> planes = this.GetAll();
+            EspecialidadAdapter ea = new EspecialidadAdapter();
+            foreach(Plan plan in planes)
+            {
+                DataRow newrow = dt.NewRow();
+                newrow[0] = plan.ID;
+                newrow[1] = plan.Descripcion;
+                newrow[2] = ea.GetOne(plan.IDEspecialidad).Descripcion;
+                dt.Rows.Add(newrow);
+            }
+            return dt;
+        }
         public Business.Entities.Plan GetOne(int ID)
         {
             Plan pl = new Plan();
@@ -125,7 +147,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("DELETE planes where id_plan=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("UPDATE planes SET deleted = 1 where id_plan=@id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
 
@@ -178,7 +200,7 @@ namespace Data.Database
                     "select @@identity", sqlConn);
 
                 cmdSave.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = plan.Descripcion;
-                cmdSave.Parameters.Add("@idesp", SqlDbType.Int, 50).Value = plan.IDEspecialidad;
+                cmdSave.Parameters.Add("@idesp", SqlDbType.Int).Value = plan.IDEspecialidad;
                 plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 
                 

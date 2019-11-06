@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="~/Default.aspx" title="Home"  description="" >
-  <siteMapNode url="~/Usuarios.aspx" title="Usuarios"  description="" />
-  <siteMapNode url="~/Especialidades.aspx" title="Especialidades"  description="" />
-  <siteMapNode url="~/Planes.aspx" title="Planes"  description="" />
-  <siteMapNode url="~/Comisiones.aspx" title="Comisiones"  description="" />
-  <siteMapNode url="~/Materias.aspx" title="Materias"  description="" />
+  <siteMapNode url="~/Usuarios.aspx" title="Usuarios" id="usuarios-menu"  description="" />
+  <siteMapNode url="~/Especialidades.aspx" title="Especialidades" id="especialidades-menu"  description="" />
+  <siteMapNode url="~/Planes.aspx" title="Planes" id="planes-menu"  description="" />
+  <siteMapNode url="~/Comisiones.aspx" title="Comisiones" id="comisiones-menu"  description="" />
+  <siteMapNode url="~/Materias.aspx" title="Materias" id="materias-menu"  description="" />
+  <siteMapNode url="~/Alumnos.aspx" title="Alumnos" id="alumnos-menu"  description="" />
+  <siteMapNode url="~/Inscripciones.aspx" title="Mis Inscripciones" id="mis-insc-menu"  description="" />
+  <siteMapNode url="~/ReporteCursos.aspx" title="Reporte Cursos" id="rep-curso"  description="" />
+  <siteMapNode url="~/ReportePlanes.aspx" title="Reporte Planes" id="rep-planes"  description="" />
+  <siteMapNode url="~/Logout.aspx" title="Cerrar Sesion" id="logout-menu"  description="" />
+    
   </siteMapNode>
 </siteMap>

@@ -14,6 +14,7 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["AlumnoInscSel"] = null;
             if (Session["UsuarioSesion"] == null)
             {
                 //Redirigir a login
@@ -30,6 +31,12 @@ namespace UI.Web
                     this.LoadGrid();
                 }
                 //LLenarDropEspecialidades();
+            }
+            PersonaLogic pl = new PersonaLogic();
+            Usuario usuario = (Usuario)Session["UsuarioSesion"];
+            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin) && !(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Docente))
+            {
+                Response.Redirect("~/Default.aspx");
             }
         }
         PlanLogic _plan;

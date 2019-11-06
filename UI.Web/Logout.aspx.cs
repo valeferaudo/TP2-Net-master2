@@ -7,19 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace UI.Web
 {
-    public partial class Site : System.Web.UI.MasterPage
+    public partial class Logout : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (1 == 1)
-            {
-                
-            }
-        }
-
-        protected void Menu_MenuItemClick(object sender, MenuEventArgs e)
-        {
-
+            Session["AlumnoInscSel"] = null;
+            Session["UsuarioSesion"] = null;
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

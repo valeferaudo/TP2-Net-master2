@@ -256,16 +256,19 @@ namespace Data.Database
             
            
                 SqlCommand cmdSave = new SqlCommand(
+
                     "INSERT INTO alumnos_inscripciones(id_alumno,id_curso,condicion,nota) " + 
                     "values(@id_alumno, @id_curso, @condicion, @nota) " + 
                     "select @@identity", sqlConn);
 
-               
+                SqlCommand cmdupdatenoseque = new SqlCommand("UPDATE cursos SET cupo = (cupo - 1) WHERE id_curso = @id_curso", sqlConn);
+                cmdupdatenoseque.Parameters.Add("@id_curso", SqlDbType.Int).Value = ins.IDCurso;
                 cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = ins.IDAlumno;
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = ins.IDCurso;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = ins.Condicion;
                 cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = ins.Nota;
                 ins.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
+                cmdupdatenoseque.ExecuteNonQuery();
 
                 
             }

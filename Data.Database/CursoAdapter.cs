@@ -69,7 +69,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM cursos", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM cursos where deleted is null", sqlConn);
                 SqlDataReader drCursos = cmdUsuarios.ExecuteReader();
                 while (drCursos.Read())
                 {
@@ -93,7 +93,36 @@ namespace Data.Database
             this.CloseConnection();
             return cursos;
         }
-
+        public DataTable ReporteCurso()
+        {
+            DataSet reporte = new DataSet();
+            DataTable dt = new DataTable();
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("id_curso", typeof(int));
+                dt.Columns.Add("descripcion", typeof(string));
+                dt.Columns.Add("cupo", typeof(int));
+                dt.Columns.Add("anio_calendario", typeof(int));
+                dt.Columns.Add("desc_materia", typeof(string));
+                dt.Columns.Add("desc_comision", typeof(string));
+            }
+            List<Curso> cursos = this.GetAll();
+            MateriaAdapter ma = new MateriaAdapter();
+            ComisionAdapter ca = new ComisionAdapter();
+            foreach(Curso curso in cursos)
+            {
+                DataRow newrow = dt.NewRow();
+                newrow[0] = curso.ID;
+                newrow[1] = curso.Descripcion;
+                newrow[2] = curso.Cupo;
+                newrow[3] = curso.AnioCalendario;
+                newrow[4] = ma.GetOne(curso.IDMateria).Descripcion;
+                newrow[5] = ca.GetOne(curso.IDComision).Descripcion;
+                dt.Rows.Add(newrow);
+            }
+            
+            return dt;
+        }
 
         public List<Curso> GetInscribibleAlumno(int alumnoid)
         {
@@ -105,7 +134,7 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdUsuarios = new SqlCommand("select * from cursos, materias where " +
-                "cursos.id_materia = materias.id_materia AND materias.id_plan = @idpl", sqlConn);
+                "cursos.id_materia = materias.id_materia AND materias.id_plan = @idpl and cursos.deleted is null and cupo>0", sqlConn);
                 PersonaAdapter pa = new PersonaAdapter();
                 cmdUsuarios.Parameters.Add("@idpl", SqlDbType.Int).Value = pa.GetOne(alumnoid).IDPlan;
                 SqlDataReader drCursos = cmdUsuarios.ExecuteReader();
@@ -214,7 +243,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("DELETE cursos where id_curso=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("UPDATE cursos SET deleted = 1 where id_curso=@id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
 
