@@ -43,12 +43,12 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>PlanesReporte</rd:DataSetName>
-        <rd:SchemaPath>D:\Desktop\Facultad\Net\TP2\TP2 JUAN Y VALENTIN\TP2-Net-master\UI.Desktop\DataSetReportes.xsd</rd:SchemaPath>
-        <rd:TableName>CursosReporte</rd:TableName>
+        <rd:DataSetName>tp2_netDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Juan Agustin\source\repos\valeferaudo\TP2-Net-master2\UI.Web\tp2_netDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>cursos</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>CursosReporteTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>cursosTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

@@ -91,6 +91,17 @@
     <Content Include="Planes.aspx" />
     <Content Include="ReporteCursos.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="tp2_netDataSet.xsc">
+      <DependentUpon>tp2_netDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="tp2_netDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tp2_netDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="tp2_netDataSet.xss">
+      <DependentUpon>tp2_netDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -188,6 +199,14 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="tp2_netDataSet.cs">
+      <DependentUpon>tp2_netDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="tp2_netDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tp2_netDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,6 +238,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="ReporteCurso.rdlc" />
   </ItemGroup>
   <PropertyGroup>

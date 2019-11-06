@@ -93,7 +93,36 @@ namespace Data.Database
             this.CloseConnection();
             return cursos;
         }
-
+        public DataTable ReporteCurso()
+        {
+            DataSet reporte = new DataSet();
+            DataTable dt = new DataTable();
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("id_curso", typeof(int));
+                dt.Columns.Add("descripcion", typeof(string));
+                dt.Columns.Add("cupo", typeof(int));
+                dt.Columns.Add("anio_calendario", typeof(int));
+                dt.Columns.Add("desc_materia", typeof(string));
+                dt.Columns.Add("desc_comision", typeof(string));
+            }
+            List<Curso> cursos = this.GetAll();
+            MateriaAdapter ma = new MateriaAdapter();
+            ComisionAdapter ca = new ComisionAdapter();
+            foreach(Curso curso in cursos)
+            {
+                DataRow newrow = dt.NewRow();
+                newrow[0] = curso.ID;
+                newrow[1] = curso.Descripcion;
+                newrow[2] = curso.Cupo;
+                newrow[3] = curso.AnioCalendario;
+                newrow[4] = ma.GetOne(curso.IDMateria).Descripcion;
+                newrow[5] = ca.GetOne(curso.IDComision).Descripcion;
+                dt.Rows.Add(newrow);
+            }
+            
+            return dt;
+        }
 
         public List<Curso> GetInscribibleAlumno(int alumnoid)
         {
