@@ -87,6 +87,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Especialidades.aspx" />
     <Content Include="Inscripciones.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="Materias.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="ReporteCursos.aspx" />
@@ -169,6 +170,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Materias.aspx.cs">
       <DependentUpon>Materias.aspx</DependentUpon>
