@@ -37,7 +37,9 @@ namespace UI.Web
                 {
                     Response.Redirect("~/Default.aspx");
                 }
-                // this.LlenarDropPlanes();
+                
+                this.LlenarDropPlanes();
+               
             }
         }
         private ComisionLogic _Comision;
@@ -129,24 +131,38 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)Convert.ToInt32(this.gridViewComisiones.SelectedRow.Cells[0].Text);
-            this.DropDownList1.Items.Clear();
+           
             this.formPanel.Visible = false;
             this.ClearForm();
         }
         private void LoadForm(int ID)
         {
+            PlanLogic pl = new PlanLogic();
             this.Entity = this.Comision.GetOne(ID);
             this.descripcionTextBox.Text = this.Entity.Descripcion;
             this.anioEspecialidadTextBox.Text = (this.Entity.AnioEspecialidad).ToString();
-            this.DropDownList1.SelectedValue = (this.Entity.IDPlan).ToString();
-         
+            List<Plan> planes = pl.GetAll();
+            Plan plan = pl.GetOne(Entity.IDPlan);
+            bool contiene = false;//Verificar que no este borrado logico, si esta borrado, no setear dropdown
+            foreach(Plan planaaa in planes)
+            {
+                if (planaaa.ID == plan.ID)
+                {
+                    contiene = true;
+                }
+            }
+            if (contiene)
+            {
+                this.DropDownList1.SelectedValue = (this.Entity.IDPlan).ToString();
+            }
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
+            
             if (this.IsEntitySelected)
             {
-                this.LlenarDropPlanes();
+                
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -167,7 +183,7 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            this.DropDownList1.Items.Clear();
+            
             switch (this.formMode)
             {
                 case formModes.Alta:
@@ -222,10 +238,11 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
-                this.formPanel.Visible = true;
+                
                 this.formMode = formModes.Baja;
                 this.EnableForm(false);
-                this.LoadForm(this.SelectedID);
+                this.DeleteEntity(this.SelectedID);
+                this.LoadGrid();
             }
         }
         private void DeleteEntity(int ID)
@@ -235,7 +252,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            this.LlenarDropPlanes();
+            
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
@@ -251,12 +268,13 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            this.DropDownList1.Items.Clear();
+            
             this.formPanel.Visible = false;
             this.ClearForm();
         }
         private void LlenarDropPlanes()
         {
+            DropDownList1.Items.Clear();
             PlanLogic pl = new PlanLogic();
             List<Plan> planes = pl.GetAll();
             foreach (Plan plan in planes)

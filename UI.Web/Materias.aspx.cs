@@ -30,7 +30,7 @@ namespace UI.Web
                 {
                     this.LoadGrid();
                 }
-                //this.LlenarDropMateria();
+                
             }
             PersonaLogic pl = new PersonaLogic();
             Usuario usuario = (Usuario)Session["UsuarioSesion"];
@@ -38,6 +38,7 @@ namespace UI.Web
             {
                 Response.Redirect("~/Default.aspx");
             }
+            this.LlenarDropMateria();
         }
         private MateriaLogic _Materia;
 
@@ -131,7 +132,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)Convert.ToInt32(this.gridViewMaterias.SelectedRow.Cells[0].Text);
-            this.ddlPlanes.Items.Clear();
+           
             this.formPanel.Visible = false;
             this.ClearForm();
         }
@@ -150,7 +151,7 @@ namespace UI.Web
             
             if (this.IsEntitySelected)
             {
-                this.LlenarDropMateria();
+                
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -173,7 +174,7 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            this.ddlPlanes.Items.Clear();
+            
             switch (this.formMode)
             {
                 case formModes.Alta:
@@ -241,7 +242,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            this.LlenarDropMateria();
+            
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
@@ -257,13 +258,14 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            this.ddlPlanes.Items.Clear();
+            
             this.formPanel.Visible = false;
             this.ClearForm();
         }
 
         public void LlenarDropMateria()
         {
+            ddlPlanes.Items.Clear();
             PlanLogic pl = new PlanLogic();
             List<Plan> planes = pl.GetAll();
             foreach (Plan plan in planes)

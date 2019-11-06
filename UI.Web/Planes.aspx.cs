@@ -30,7 +30,7 @@ namespace UI.Web
                 {
                     this.LoadGrid();
                 }
-                //LLenarDropEspecialidades();
+                
             }
             PersonaLogic pl = new PersonaLogic();
             Usuario usuario = (Usuario)Session["UsuarioSesion"];
@@ -38,6 +38,7 @@ namespace UI.Web
             {
                 Response.Redirect("~/Default.aspx");
             }
+            this.LLenarDropEspecialidades();
         }
         PlanLogic _plan;
         private PlanLogic Plan
@@ -127,7 +128,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)Convert.ToInt32(this.gridViewPlan.SelectedRow.Cells[0].Text);
-            this.ddlEspecialidades.Items.Clear();
+            
             this.formPanel.Visible = false;
             this.ClearForm();
         }
@@ -142,7 +143,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
-                LLenarDropEspecialidades();
+                
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -162,7 +163,7 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            this.ddlEspecialidades.Items.Clear();
+            
             switch (this.formMode)
             {
                 case formModes.Alta:
@@ -227,7 +228,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            LLenarDropEspecialidades();
+            
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
@@ -241,13 +242,14 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            this.ddlEspecialidades.Items.Clear();
+            
             this.formPanel.Visible = false;
             this.ClearForm();
         }
 
         public void LLenarDropEspecialidades()
         {
+            ddlEspecialidades.Items.Clear();
             EspecialidadLogic el = new EspecialidadLogic();
             List<Especialidad> especialidades = el.GetAll();
             foreach (Especialidad espe in especialidades)

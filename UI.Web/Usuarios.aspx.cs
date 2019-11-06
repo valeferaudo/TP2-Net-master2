@@ -30,7 +30,7 @@ namespace UI.Web
                 {
                     this.LoadGrid();
                 }
-                //LlenarDropPersonas();
+                LlenarDropPersonas();
             }
             PersonaLogic pl = new PersonaLogic();
             Usuario usuariolog = (Usuario)Session["UsuarioSesion"];
@@ -106,7 +106,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)this.gridView.SelectedValue;
-            this.ddlPersona.Items.Clear();
+            
             this.formPanel.Visible = false;
             this.ClearForm();
         }
@@ -125,7 +125,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
-                LlenarDropPersonas();
+                
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -150,7 +150,7 @@ namespace UI.Web
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
         {
-            this.ddlPersona.Items.Clear();
+            
             switch (this.formMode)
             {
                 case formModes.Alta:
@@ -220,7 +220,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            LlenarDropPersonas();
+            
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
@@ -238,13 +238,14 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            this.ddlPersona.Items.Clear();
+            
             this.formPanel.Visible = false;
             this.ClearForm();
         }
 
         public void LlenarDropPersonas()
         {
+            ddlPersona.Items.Clear();
             PersonaLogic pl = new PersonaLogic();
             List<Personas> personas = pl.GetAll();
             foreach (Personas persona in personas)
