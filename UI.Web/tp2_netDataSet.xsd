@@ -44,7 +44,7 @@
   <xs:element name="tp2_netDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="tp2_netDataSet" msprop:Generator_UserDSName="tp2_netDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="cursos" msprop:Generator_TableClassName="cursosDataTable" msprop:Generator_TableVarName="tablecursos" msprop:Generator_RowChangedName="cursosRowChanged" msprop:Generator_TablePropName="cursos" msprop:Generator_RowDeletingName="cursosRowDeleting" msprop:Generator_RowChangingName="cursosRowChanging" msprop:Generator_RowEvHandlerName="cursosRowChangeEventHandler" msprop:Generator_RowDeletedName="cursosRowDeleted" msprop:Generator_RowClassName="cursosRow" msprop:Generator_UserTableName="cursos" msprop:Generator_RowEvArgName="cursosRowChangeEvent">
+        <xs:element name="cursos" msprop:Generator_TableClassName="cursosDataTable" msprop:Generator_TableVarName="tablecursos" msprop:Generator_TablePropName="cursos" msprop:Generator_RowDeletingName="cursosRowDeleting" msprop:Generator_RowChangingName="cursosRowChanging" msprop:Generator_RowEvHandlerName="cursosRowChangeEventHandler" msprop:Generator_RowDeletedName="cursosRowDeleted" msprop:Generator_UserTableName="cursos" msprop:Generator_RowChangedName="cursosRowChanged" msprop:Generator_RowEvArgName="cursosRowChangeEvent" msprop:Generator_RowClassName="cursosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_curso" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_curso" msprop:Generator_ColumnPropNameInRow="id_curso" msprop:Generator_ColumnPropNameInTable="id_cursoColumn" msprop:Generator_UserColumnName="id_curso" type="xs:int" />
@@ -71,6 +71,15 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="planes" msprop:Generator_TableClassName="planesDataTable" msprop:Generator_TableVarName="tableplanes" msprop:Generator_TablePropName="planes" msprop:Generator_RowDeletingName="planesRowDeleting" msprop:Generator_RowChangingName="planesRowChanging" msprop:Generator_RowEvHandlerName="planesRowChangeEventHandler" msprop:Generator_RowDeletedName="planesRowDeleted" msprop:Generator_UserTableName="planes" msprop:Generator_RowChangedName="planesRowChanged" msprop:Generator_RowEvArgName="planesRowChangeEvent" msprop:Generator_RowClassName="planesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_plan" msprop:Generator_ColumnVarNameInTable="columnid_plan" msprop:Generator_ColumnPropNameInRow="id_plan" msprop:Generator_ColumnPropNameInTable="id_planColumn" msprop:Generator_UserColumnName="id_plan" type="xs:string" minOccurs="0" />
+              <xs:element name="desc_plan" msprop:Generator_ColumnVarNameInTable="columndesc_plan" msprop:Generator_ColumnPropNameInRow="desc_plan" msprop:Generator_ColumnPropNameInTable="desc_planColumn" msprop:Generator_UserColumnName="desc_plan" type="xs:string" minOccurs="0" />
+              <xs:element name="desc_especialidad" msprop:Generator_ColumnVarNameInTable="columndesc_especialidad" msprop:Generator_ColumnPropNameInRow="desc_especialidad" msprop:Generator_ColumnPropNameInTable="desc_especialidadColumn" msprop:Generator_UserColumnName="desc_especialidad" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

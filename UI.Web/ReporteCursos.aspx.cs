@@ -14,7 +14,9 @@ namespace UI.Web
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            DateTime fecha = DateTime.Now;
+            if (!IsPostBack)
+            {
+                DateTime fecha = DateTime.Now;
             LocalReport localReport = ReportViewer1.LocalReport;
 
             localReport.ReportPath = "ReporteCurso.rdlc";
@@ -26,8 +28,21 @@ namespace UI.Web
             parametros[0] = new ReportParameter("Fecha", (fecha).ToString());
             ReportViewer1.LocalReport.SetParameters(parametros);
             ReportViewer1.DataBind();
-            // TODO: esta línea de código carga datos en la tabla 'PlanesReporte.CursosReporte' Puede moverla o quitarla según sea necesario.
+            CursoAdapter ca = new CursoAdapter();
+           
+
+            this.ReportViewer1.LocalReport.DataSources.Clear();
+            DataTable dt = new DataTable();
+            dt = ca.ReporteCurso();
+
+            ReportDataSource rprtDTSource = new ReportDataSource("DataSet1", dt);
+
+            this.ReportViewer1.LocalReport.DataSources.Add(rprtDTSource);
             
+                this.ReportViewer1.LocalReport.Refresh();
+            }
+            // TODO: esta línea de código carga datos en la tabla 'PlanesReporte.CursosReporte' Puede moverla o quitarla según sea necesario.
+           
         }
 	}
 }

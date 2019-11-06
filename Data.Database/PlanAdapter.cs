@@ -88,7 +88,29 @@ namespace Data.Database
             this.CloseConnection();
             return planes;
         }
+        public DataTable ReportePlan()
+        {
+            DataSet reporte = new DataSet();
+            DataTable dt = new DataTable();
+            if (dt.Columns.Count == 0)
+            {
+                dt.Columns.Add("id_plan", typeof(int));
+                dt.Columns.Add("desc_plan", typeof(string));
+                dt.Columns.Add("desc_especialidad", typeof(string));
 
+            }
+            List<Plan> planes = this.GetAll();
+            EspecialidadAdapter ea = new EspecialidadAdapter();
+            foreach(Plan plan in planes)
+            {
+                DataRow newrow = dt.NewRow();
+                newrow[0] = plan.ID;
+                newrow[1] = plan.Descripcion;
+                newrow[2] = ea.GetOne(plan.IDEspecialidad).Descripcion;
+                dt.Rows.Add(newrow);
+            }
+            return dt;
+        }
         public Business.Entities.Plan GetOne(int ID)
         {
             Plan pl = new Plan();
