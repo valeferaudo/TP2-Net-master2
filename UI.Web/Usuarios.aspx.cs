@@ -30,7 +30,10 @@ namespace UI.Web
                 {
                     this.LoadGrid();
                 }
-                LlenarDropPersonas();
+                if (!IsPostBack)
+                {
+                    LlenarDropPersonas();
+                }
             }
             PersonaLogic pl = new PersonaLogic();
             Usuario usuariolog = (Usuario)Session["UsuarioSesion"];

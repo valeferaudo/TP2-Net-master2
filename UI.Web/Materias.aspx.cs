@@ -38,7 +38,10 @@ namespace UI.Web
             {
                 Response.Redirect("~/Default.aspx");
             }
-            this.LlenarDropMateria();
+            if (!IsPostBack)
+            {
+                this.LlenarDropMateria();
+            }
         }
         private MateriaLogic _Materia;
 

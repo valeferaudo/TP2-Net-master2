@@ -38,7 +38,10 @@ namespace UI.Web
             {
                 Response.Redirect("~/Default.aspx");
             }
-            this.LLenarDropEspecialidades();
+            if (!IsPostBack)
+            {
+                this.LLenarDropEspecialidades();
+            }
         }
         PlanLogic _plan;
         private PlanLogic Plan

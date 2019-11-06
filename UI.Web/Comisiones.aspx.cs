@@ -37,9 +37,10 @@ namespace UI.Web
                 {
                     Response.Redirect("~/Default.aspx");
                 }
-                
-                this.LlenarDropPlanes();
-               
+                if (!IsPostBack)
+                {
+                    this.LlenarDropPlanes();
+                }
             }
         }
         private ComisionLogic _Comision;
