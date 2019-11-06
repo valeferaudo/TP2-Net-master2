@@ -200,7 +200,7 @@ namespace Data.Database
                     "select @@identity", sqlConn);
 
                 cmdSave.Parameters.Add("@desc", SqlDbType.VarChar, 50).Value = plan.Descripcion;
-                cmdSave.Parameters.Add("@idesp", SqlDbType.Int, 50).Value = plan.IDEspecialidad;
+                cmdSave.Parameters.Add("@idesp", SqlDbType.Int).Value = plan.IDEspecialidad;
                 plan.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 
                 

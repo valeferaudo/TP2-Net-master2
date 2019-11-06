@@ -14,8 +14,8 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
+            Session["AlumnoInscSel"] = null;
+
             if (Session["UsuarioSesion"] == null)
             {
                 //Redirigir a login

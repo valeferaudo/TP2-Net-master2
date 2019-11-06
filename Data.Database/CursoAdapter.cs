@@ -134,7 +134,7 @@ namespace Data.Database
                 this.OpenConnection();
 
                 SqlCommand cmdUsuarios = new SqlCommand("select * from cursos, materias where " +
-                "cursos.id_materia = materias.id_materia AND materias.id_plan = @idpl and cursos.deleted is null", sqlConn);
+                "cursos.id_materia = materias.id_materia AND materias.id_plan = @idpl and cursos.deleted is null and cupo>0", sqlConn);
                 PersonaAdapter pa = new PersonaAdapter();
                 cmdUsuarios.Parameters.Add("@idpl", SqlDbType.Int).Value = pa.GetOne(alumnoid).IDPlan;
                 SqlDataReader drCursos = cmdUsuarios.ExecuteReader();

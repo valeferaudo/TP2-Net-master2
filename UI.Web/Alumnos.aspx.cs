@@ -15,6 +15,7 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["AlumnoInscSel"] = null;
             PersonaLogic pl = new PersonaLogic();
             Usuario usuario = (Usuario)Session["UsuarioSesion"];
             if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin) && !(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Docente))
