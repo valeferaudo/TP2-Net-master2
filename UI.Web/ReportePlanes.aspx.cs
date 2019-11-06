@@ -7,12 +7,30 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Data.Database;
 using System.Data;
+using Business.Entities;
+using Business.Logic;
 
 namespace UI.Web
 {
     public partial class ReportePlanes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["UsuarioSesion"] == null)
+            {
+                //Redirigir a login
+                Response.Redirect("~/Login.aspx");
+            }
+
+            PersonaLogic pl = new PersonaLogic();
+            Usuario usuario = (Usuario)Session["UsuarioSesion"];
+            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin))
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            this.reporte();
+        }
+        private void reporte()
         {
             if (!IsPostBack)
             {

@@ -8,6 +8,8 @@
   <siteMapNode url="~/Materias.aspx" title="Materias" id="materias-menu"  description="" />
   <siteMapNode url="~/Alumnos.aspx" title="Alumnos" id="alumnos-menu"  description="" />
   <siteMapNode url="~/Inscripciones.aspx" title="Mis Inscripciones" id="mis-insc-menu"  description="" />
+  <siteMapNode url="~/ReporteCursos.aspx" title="Reporte Cursos" id="rep-curso"  description="" />
+  <siteMapNode url="~/ReportePlanes.aspx" title="Reporte Planes" id="rep-planes"  description="" />
   <siteMapNode url="~/Login.aspx" title="Cerrar Sesion" id="logout-menu"  description="" />
     
   </siteMapNode>
