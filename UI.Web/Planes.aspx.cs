@@ -251,6 +251,7 @@ namespace UI.Web
             this.formMode = formModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
+            this.gridViewPlan.SelectedIndex = -1;
         }
         private void ClearForm()
         {

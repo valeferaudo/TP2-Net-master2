@@ -144,7 +144,8 @@ namespace UI.Web
             this.CleantxtBox();
             this.DropDownListPlan.Visible = true;
             this.DropDownListPlan.Enabled = true;
-            
+            this.GridViewAlumnos.SelectedIndex = -1;
+
         }
         private void CleantxtBox()
         {
