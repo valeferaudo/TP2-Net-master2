@@ -170,11 +170,21 @@ namespace UI.Desktop
             reporteCurso.ShowDialog();
         }
 
-        private void alumnosToolStripMenuItem1_Click(object sender, EventArgs e)
+
+
+        private void alumnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form alumno = new Alumnos();
             alumno.ShowDialog();
         }
+
+        private void cursoDocenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form docente = new Docentes();
+            docente.ShowDialog();
+        }
+
+        
     }
 }
 

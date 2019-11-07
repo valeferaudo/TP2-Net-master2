@@ -191,7 +191,9 @@ namespace Data.Database
             {
                 this.OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "UPDATE personas SET nombre = @nombre, apellido = @apellido, " + "id_plan = @idplan, fecha_nac = @fecnac, telefono = @tel, legajo = @legajo, direccion = @direccion, email = @email " + "WHERE id_persona=@id", sqlConn);
+                    "UPDATE personas SET nombre = @nombre, apellido = @apellido, " +
+                    "id_plan = @idplan, fecha_nac = @fecnac, telefono = @tel, legajo = @legajo, direccion = @direccion, email = @email, " +
+                    "tipo_persona=@tipoper " + "WHERE id_persona=@id", sqlConn);
                 cmdSave.Parameters.Add("@id", SqlDbType.Int).Value = persona.ID;
                 cmdSave.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = persona.Nombre;
                 cmdSave.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = persona.Apellido;
@@ -201,7 +203,23 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = persona.Email;
                 cmdSave.Parameters.Add("@fecnac", SqlDbType.DateTime, 50).Value = persona.FechaNacimiento;
                 cmdSave.Parameters.Add("@tel", SqlDbType.VarChar, 50).Value = persona.Telefono;
+                int nrotipo = 0;
+                if (persona.TipoPersona == Personas.tipopersona.Admin)
+                {
+                    nrotipo = 3;
+                }
+                if (persona.TipoPersona == Personas.tipopersona.Alumno)
+                {
+                    nrotipo = 1;
+                }
+                if (persona.TipoPersona == Personas.tipopersona.Docente)
+                {
+                    nrotipo = 2;
+                }
+
+                cmdSave.Parameters.Add("@tipoper", SqlDbType.VarChar, 50).Value = nrotipo;
                 cmdSave.ExecuteNonQuery();
+
             }
             catch (Exception Ex)
             {

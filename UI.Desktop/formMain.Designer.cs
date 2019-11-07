@@ -42,8 +42,9 @@
             this.comisionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.alumnosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.docentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inscripcionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alumnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cursoDocenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,8 @@
             this.planesToolStripMenuItem,
             this.comisionesToolStripMenuItem,
             this.materiasToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.inscripcionToolStripMenuItem});
             this.mnsPrincipal.Location = new System.Drawing.Point(0, 0);
             this.mnsPrincipal.Name = "mnsPrincipal";
             this.mnsPrincipal.Size = new System.Drawing.Size(876, 24);
@@ -94,7 +96,7 @@
             // reporteCursoToolStripMenuItem
             // 
             this.reporteCursoToolStripMenuItem.Name = "reporteCursoToolStripMenuItem";
-            this.reporteCursoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.reporteCursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reporteCursoToolStripMenuItem.Text = "Reporte Curso";
             this.reporteCursoToolStripMenuItem.Click += new System.EventHandler(this.reporteCursoToolStripMenuItem_Click);
             // 
@@ -107,9 +109,6 @@
             // 
             // alumnosToolStripMenuItem
             // 
-            this.alumnosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alumnosToolStripMenuItem1,
-            this.docentesToolStripMenuItem});
             this.alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
             this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.alumnosToolStripMenuItem.Text = "Personas";
@@ -163,18 +162,28 @@
             this.toolStripMenuItem1.Text = "Cursos";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // alumnosToolStripMenuItem1
+            // inscripcionToolStripMenuItem
             // 
-            this.alumnosToolStripMenuItem1.Name = "alumnosToolStripMenuItem1";
-            this.alumnosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.alumnosToolStripMenuItem1.Text = "Alumnos";
-            this.alumnosToolStripMenuItem1.Click += new System.EventHandler(this.alumnosToolStripMenuItem1_Click);
+            this.inscripcionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alumnoToolStripMenuItem,
+            this.cursoDocenteToolStripMenuItem});
+            this.inscripcionToolStripMenuItem.Name = "inscripcionToolStripMenuItem";
+            this.inscripcionToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.inscripcionToolStripMenuItem.Text = "Inscripcion";
             // 
-            // docentesToolStripMenuItem
+            // alumnoToolStripMenuItem
             // 
-            this.docentesToolStripMenuItem.Name = "docentesToolStripMenuItem";
-            this.docentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.docentesToolStripMenuItem.Text = "Docentes";
+            this.alumnoToolStripMenuItem.Name = "alumnoToolStripMenuItem";
+            this.alumnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alumnoToolStripMenuItem.Text = "Alumnos";
+            this.alumnoToolStripMenuItem.Click += new System.EventHandler(this.alumnoToolStripMenuItem_Click);
+            // 
+            // cursoDocenteToolStripMenuItem
+            // 
+            this.cursoDocenteToolStripMenuItem.Name = "cursoDocenteToolStripMenuItem";
+            this.cursoDocenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cursoDocenteToolStripMenuItem.Text = "Docentes";
+            this.cursoDocenteToolStripMenuItem.Click += new System.EventHandler(this.cursoDocenteToolStripMenuItem_Click);
             // 
             // formMain
             // 
@@ -212,7 +221,8 @@
         private System.Windows.Forms.ToolStripMenuItem reportePlanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteCursoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem alumnosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem docentesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inscripcionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alumnoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cursoDocenteToolStripMenuItem;
     }
 }

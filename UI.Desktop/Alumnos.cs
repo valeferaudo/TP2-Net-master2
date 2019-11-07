@@ -48,51 +48,14 @@ namespace UI.Desktop
             Listar();
             
         }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            Listar();
-        }
+              
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void tsbNuevo_Click(object sender, EventArgs e)
-        {
-           /* PersonaDesktop ud = new PersonaDesktop(Abm.ModoForm.Alta);
-            ud.ShowDialog();
-            this.Listar();*/
-        }
-
-        private void tsbEditar_Click(object sender, EventArgs e)
-        {
-           /* if (dgvAlumnos.SelectedRows != null)
-            {
-                int ID = ((Business.Entities.Personas)this.dgvAlumnos.SelectedRows[0].DataBoundItem).ID;
-                PersonaDesktop ud = new PersonaDesktop(ID, Abm.ModoForm.Modificacion);
-                ud.ShowDialog();
-                this.Listar();
-            }*/
-            
-        }
-
-        private void tsbEliminar_Click(object sender, EventArgs e)
-        {
-            /*if (dgvAlumnos.SelectedRows != null)
-            {
-                int ID = ((Business.Entities.Personas)this.dgvAlumnos.SelectedRows[0].DataBoundItem).ID;
-                PersonaDesktop ud = new PersonaDesktop(ID, Abm.ModoForm.Baja);
-                ud.ShowDialog();
-                this.Listar();
-            }*/
-        }
-
-        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
