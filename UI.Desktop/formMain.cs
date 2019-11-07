@@ -169,6 +169,12 @@ namespace UI.Desktop
             Form reporteCurso = new FormReporteCurso();
             reporteCurso.ShowDialog();
         }
+
+        private void alumnosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form alumno = new Alumnos();
+            alumno.ShowDialog();
+        }
     }
 }
 

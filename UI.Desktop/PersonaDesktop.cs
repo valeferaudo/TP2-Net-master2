@@ -47,9 +47,9 @@ namespace UI.Desktop
 
 
         }
-        
-        
-        
+
+
+      
         private Personas _PersonaActual;
         public Personas PersonaActual
         {
@@ -57,10 +57,8 @@ namespace UI.Desktop
             set { _PersonaActual = value; }
         }
 
-        public void MapearDeDatos() {
-
-            
-
+        public void MapearDeDatos()
+        {                    
             this.txtID.Text = this.PersonaActual.ID.ToString();
             this.cmbTipoPersona.SelectedValue = this.PersonaActual.TipoPersona;
             this.txtNombre.Text = this.PersonaActual.Nombre;
@@ -95,11 +93,13 @@ namespace UI.Desktop
                 PersonaActual.IDPlan = nroplan;
                 PersonaActual.FechaNacimiento = dtpFecha.Value;
                 PersonaActual.Direccion = txtDireccion.Text;
-                PersonaLogic pl = new PersonaLogic();
-                List<Personas> personas = pl.GetAll();
-                //PersonaActual.TipoPersona = personas[cmbTipoPersona.SelectedIndex].TipoPersona;
-                //PersonaActual.TipoPersona = personas[Convert.ToInt32(cmbTipoPersona.SelectedValue)].TipoPersona;
-                
+
+                if (cmbTipoPersona.ValueMember == "Alumno")
+                { PersonaActual.TipoPersona = Personas.tipopersona.Alumno; }
+                if (cmbTipoPersona.ValueMember == "Docente")
+                { PersonaActual.TipoPersona = Personas.tipopersona.Docente; }
+                if (cmbTipoPersona.ValueMember == "Admin")
+                { PersonaActual.TipoPersona = Personas.tipopersona.Admin; }
             }
             if (modostr == "Modificacion")
             {

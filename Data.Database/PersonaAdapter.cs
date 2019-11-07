@@ -234,7 +234,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = persona.Email;
                 cmdSave.Parameters.Add("@fecnac", SqlDbType.DateTime, 50).Value = persona.FechaNacimiento;
                 cmdSave.Parameters.Add("@tel", SqlDbType.VarChar, 50).Value = persona.Telefono;
-                int nrotipo = 0;
+                /*int nrotipo = 0;
                 if(persona.TipoPersona == Personas.tipopersona.Admin)
                 {
                     nrotipo = 3;
@@ -246,9 +246,9 @@ namespace Data.Database
                 if (persona.TipoPersona == Personas.tipopersona.Docente)
                 {
                     nrotipo = 2;
-                }
+                }*/
 
-                cmdSave.Parameters.Add("@tipoper", SqlDbType.VarChar, 50).Value = nrotipo;
+                cmdSave.Parameters.Add("@tipoper", SqlDbType.VarChar, 50).Value = persona.TipoPersona;
                 persona.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
 
             }
