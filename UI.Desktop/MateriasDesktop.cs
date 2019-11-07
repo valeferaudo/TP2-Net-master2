@@ -147,30 +147,59 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
-            
-            if ((this.txtDescripcion.Text != "" || this.txtHsSemanales.Text != "" || this.txtHsTotales.Text != "" || cbDescPlan.SelectedIndex != -1))
+            if (!(Modo == ModoForm.Baja))
             {
-                if (ValidacionIngresoDatos.EsNumero(txtHsSemanales.Text))
+                if ((this.txtDescripcion.Text != "" && this.txtHsSemanales.Text != "" && this.txtHsTotales.Text != "" && cbDescPlan.SelectedIndex != -1))
                 {
-                   if(ValidacionIngresoDatos.EsNumero(txtHsTotales.Text))
-                    { return true; }
+                    if (ValidacionIngresoDatos.EsNumero(txtHsSemanales.Text))
+                    {
+                        if (ValidacionIngresoDatos.EsNumero(txtHsTotales.Text))
+                        { return true; }
+                        else
+                        {
+                            Notificar("Error en llenado de campos", "Ingrese una hora en HS Totales", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
                     else
                     {
-                        Notificar("Error en llenado de campos", "Ingrese una hora en HS Totales", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Notificar("Error en llenado de campos", "Ingrese una hora en HS Semanales", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
+
                 }
                 else
                 {
-                    Notificar("Error en llenado de campos", "Ingrese una hora en HS Semanales", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                
             }
             else
             {
-                Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                if ((this.txtDescripcion.Text != "" && this.txtHsSemanales.Text != "" && this.txtHsTotales.Text != "" ))
+                {
+                    if (ValidacionIngresoDatos.EsNumero(txtHsSemanales.Text))
+                    {
+                        if (ValidacionIngresoDatos.EsNumero(txtHsTotales.Text))
+                        { return true; }
+                        else
+                        {
+                            Notificar("Error en llenado de campos", "Ingrese una hora en HS Totales", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Notificar("Error en llenado de campos", "Ingrese una hora en HS Semanales", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
         }
         public void SetCBMateria()

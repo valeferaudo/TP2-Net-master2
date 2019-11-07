@@ -127,30 +127,35 @@ namespace UI.Desktop
             
 
         }
-        public virtual bool Validar() {
-            bool ok=false;
-            if (txtApellido.Text != "" && txtNombre.Text != "" && txtEmail.Text != "" && txtLegajo.Text != "" && txtTel.Text != "" && txtDireccion.Text != "" && cmbPlan.SelectedIndex != -1 )
-            {
-                if (ValidacionIngresoDatos.EsMail(txtEmail.Text))
-
+        public override bool Validar()
+        {
+            
+                if (txtApellido.Text != "" && txtNombre.Text != "" && txtEmail.Text != "" && txtLegajo.Text != "" && txtTel.Text != "" && txtDireccion.Text != "" && cmbPlan.SelectedIndex != -1)
                 {
-                    if (ValidacionIngresoDatos.EsNumero(txtTel.Text))
-                    { ok = true; }
+                    if (ValidacionIngresoDatos.EsMail(txtEmail.Text))
+
+                    {
+                        if (ValidacionIngresoDatos.EsNumero(txtTel.Text))
+                        { return true; }
+                        else
+                        {
+                            Notificar("Error", "El telefono es inválido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            return false;
+                        }
+                    }
                     else
                     {
-                        Notificar("Error", "El telefono es inválido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        Notificar("Error", "El mail es inválido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return false;
                     }
                 }
+
                 else
                 {
-                    Notificar("Error", "El mail es inválido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    Notificar("Faltan datos", "Alguno de los campos obligatorios estan vacíos", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return false;
                 }
-            }
-            else
-            {
-                Notificar("Faltan datos", "Alguno de los campos obligatorios estan vacíos", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            return ok;
+                     
         }
         public void Notificar(string titulo, string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
         {

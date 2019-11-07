@@ -133,27 +133,53 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
-            
-            if ((this.txtDescripcion.Text != "" && this.txtAnioEspe.Text != ""  && cbIDPlan.SelectedIndex != -1))
+            if (!(Modo == ModoForm.Baja))
             {
-                if (ValidacionIngresoDatos.EsNumero(txtAnioEspe.Text))
+                if ((this.txtDescripcion.Text != "" && this.txtAnioEspe.Text != "" && cbIDPlan.SelectedIndex != -1))
                 {
-                    return true;
+                    if (ValidacionIngresoDatos.EsNumero(txtAnioEspe.Text))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        Notificar("Error en llenado de campos", "Ingrese un año de especialidad correcto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
                 else
                 {
-                    Notificar("Error en llenado de campos", "Ingrese un año de especialidad correcto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
+                
             }
             else
             {
-                Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-           
-        }
+                
+                
+                    if ((this.txtDescripcion.Text != "" && this.txtAnioEspe.Text != "" ))
+                    {
+                        if (ValidacionIngresoDatos.EsNumero(txtAnioEspe.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            Notificar("Error en llenado de campos", "Ingrese un año de especialidad correcto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
 
+                
+            }
+        }
+    
         public void SetCBComision()
         {
             PlanLogic pl = new PlanLogic();

@@ -140,13 +140,30 @@ namespace UI.Desktop
         }
         public override bool Validar()
         {
-           
-            if (!(this.txtDescripcion.Text != "" && cbPlan.SelectedIndex != -1))
+            if (!(Modo == ModoForm.Baja))
             {
-                Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                if (this.txtDescripcion.Text != "" && cbPlan.SelectedIndex != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-            return true;
+            else
+            {
+                if (this.txtDescripcion.Text != "")
+                {
+                    return true;
+                }
+                else
+                {
+                    Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
         }
         public void SetCBPlan()
         {

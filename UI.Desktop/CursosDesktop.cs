@@ -184,31 +184,61 @@ namespace UI.Desktop
         }
         public override bool Validar()
         {
-
-            if ((this.txtCupo.Text != "" && this.txtAnio.Text != "" && cbComision.SelectedIndex != -1 && cbMateria.SelectedIndex != -1))
+            if (!(Modo == ModoForm.Baja))
             {
-                if (ValidacionIngresoDatos.EsNumero(txtAnio.Text))
+                if ((this.txtCupo.Text != "" && this.txtAnio.Text != "" && cbComision.SelectedIndex != -1 && cbMateria.SelectedIndex != -1))
                 {
-                    if(ValidacionIngresoDatos.EsNumero(txtCupo.Text))
+                    if (ValidacionIngresoDatos.EsNumero(txtAnio.Text))
                     {
-                        return true;
+                        if (ValidacionIngresoDatos.EsNumero(txtCupo.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            Notificar("Error en llenado de campos", "Ingrese un numero en Cupo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
                     }
                     else
                     {
-                        Notificar("Error en llenado de campos", "Ingrese un numero en Cupo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Notificar("Error en llenado de campos", "Ingrese un numero en Año Especialidad", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                 }
                 else
                 {
-                    Notificar("Error en llenado de campos", "Ingrese un numero en Año Especialidad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
             else
             {
-                Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                if ((this.txtCupo.Text != "" && this.txtAnio.Text != "" ))
+                {
+                    if (ValidacionIngresoDatos.EsNumero(txtAnio.Text))
+                    {
+                        if (ValidacionIngresoDatos.EsNumero(txtCupo.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            Notificar("Error en llenado de campos", "Ingrese un numero en Cupo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Notificar("Error en llenado de campos", "Ingrese un numero en Año Especialidad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
         }
         private void Cancelar_Click(object sender, EventArgs e)

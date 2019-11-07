@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Logic;
 using Business.Entities;
 using UI.Desktop;
+using Util;
 
 namespace UI.Desktop
 {
@@ -113,7 +114,9 @@ namespace UI.Desktop
 
         }
         public virtual bool Validar() {
+            
             bool ok=false;
+            
             if (txtApellido.Text != "" && txtNombre.Text != "" && txtUsuario.Text != "" && txtEmail.Text != "" && txtClave.Text != "" && cmbPersonas.SelectedIndex != -1)
             {
                 if(txtClave.TextLength > 7)
@@ -121,7 +124,7 @@ namespace UI.Desktop
                     if(txtClave.Text == txtConfirmarClave.Text)
                     {
                         
-                        if ((txtEmail.Text.Contains("@")) && (txtEmail.Text.Contains(".")))
+                        if (ValidacionIngresoDatos.EsMail(txtEmail.Text))
                         {
                             ok = true;
                         
