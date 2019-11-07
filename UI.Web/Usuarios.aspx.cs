@@ -204,7 +204,7 @@ namespace UI.Web
                     break;
             }
             this.LoadGrid();
-
+            this.ClearForm();
             this.formPanel.Visible = false;
         }
         private void EnableForm(bool enable)
@@ -229,6 +229,8 @@ namespace UI.Web
                 this.formMode = formModes.Baja;
                 this.EnableForm(false);
                 this.LoadForm(this.SelectedID);
+                this.claveTextBox.Attributes["value"] = "********";
+                this.repetirClaveTextBox.Attributes["value"] = "********";
             }
         }
         private void DeleteEntity(int ID)
@@ -251,7 +253,9 @@ namespace UI.Web
             this.emailTextBox.Text = string.Empty;
             this.habilitadoCheckBox.Checked = false;
             this.nombreUsuarioTextBox.Text = string.Empty;
-            
+            this.claveTextBox.Attributes["value"] = "";
+            this.repetirClaveTextBox.Attributes["value"] = "";
+
         }
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)

@@ -46,11 +46,11 @@
         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="nombreUsuarioTextBox" ErrorMessage="Ingrese Usuario" ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="claveLabel" runat="server" Text="Clave"></asp:Label>
-        <asp:TextBox ID="claveTextBox" runat="server"></asp:TextBox>
+        <asp:TextBox ID="claveTextBox" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="claveTextBox" ErrorMessage="Ingrese Clave" ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="repetirClaveLabel" runat="server" Text="Repetir Clave"></asp:Label>
-        <asp:TextBox ID="repetirClaveTextBox" runat="server"></asp:TextBox>
+        <asp:TextBox ID="repetirClaveTextBox" runat="server" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="repetirClaveTextBox" ErrorMessage="Repita Clave" ForeColor="Red">*</asp:RequiredFieldValidator>
         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="claveTextBox" ControlToValidate="repetirClaveTextBox" ErrorMessage="Las claves no coinciden" ForeColor="Red">*</asp:CompareValidator>
         <br />

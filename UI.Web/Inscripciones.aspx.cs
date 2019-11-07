@@ -40,9 +40,16 @@ namespace UI.Web
                 }
                 alumno = (Usuario)Session["AlumnoInscSel"];
             }
+            this.Label1.Text = alumno.Nombre + " " + alumno.Apellido;
             this.ListarInscripciones();
-            this.ListarMateriasDisp();
-            
+            if (!IsPostBack)
+            {
+                this.ListarMateriasDisp();
+            }
+            else
+            {
+                this.ListarMateriasDisp();
+            }
 
         }
         private AlumnoInscripcion Entity
@@ -94,7 +101,8 @@ namespace UI.Web
         {
             CursoLogic cl = new CursoLogic();
             List<Curso> cursos = cl.GetDispAlumno(alumno.ID);
-
+            DropDownList1.Items.Clear();
+            inscribibles = new List<Curso>();
             foreach (Curso value in cursos)
             {
 
@@ -106,6 +114,7 @@ namespace UI.Web
                 }
 
             }
+
         }
 
         protected void btnInscribir_Click(object sender, EventArgs e)
@@ -164,6 +173,7 @@ namespace UI.Web
                 Panel1.Visible = false;
             }
         }
+        
         
     }
 }

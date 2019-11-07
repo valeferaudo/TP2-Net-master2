@@ -287,8 +287,10 @@ namespace Data.Database
         }
         protected void Insert(Curso curso)
         {
+            MateriaAdapter ma = new MateriaAdapter();
+            ComisionAdapter ca = new ComisionAdapter();
 
-
+            curso.Descripcion = ma.GetOne(curso.IDMateria).Descripcion + " " + ca.GetOne(curso.IDComision).Descripcion + " " + Convert.ToString(curso.AnioCalendario); 
             try
             {
                 this.OpenConnection();

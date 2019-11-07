@@ -7,7 +7,9 @@
             <br />
             <br />
             <br />
-            Inscripciones del alumno ---</div>
+            Inscripciones del alumno
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        </div>
         <asp:GridView ID="GridViewInscripciones" runat="server" AllowCustomPaging="True" SelectedRowStyle-BackColor="Black" 
             SelectedRowStyle-ForeColor="White" DataKeyNames="ID" OnSelectedIndexChanged="gridView_SelectedIndexChanged" AutoGenerateColumns="False">
             <Columns>
