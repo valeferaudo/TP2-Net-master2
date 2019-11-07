@@ -23,7 +23,7 @@ namespace Data.Database
                 //se crea un objeto sqlcomand q sera la sentencia  sql que se va a ejecutar contra la base de datos
                 //los datos de la base de datos (usuario,contraseña, servidor,etc) estan en el connectionString
 
-                SqlCommand cmdEspecialidades = new SqlCommand("SELECT * FROM especialidades WHERE deleted is null", sqlConn);
+                SqlCommand cmdEspecialidades = new SqlCommand("SELECT * FROM especialidades", sqlConn);
                 //se instancia un objeto dataReader que sera el que recupera los datos de la bd
                 SqlDataReader drEspecialidades = cmdEspecialidades.ExecuteReader();
 
@@ -117,7 +117,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdDelete = new SqlCommand("UPDATE especialidades SET deleted = 1 WHERE id_especialidad = @id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("delete especialidades WHERE id_especialidad = @id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
             }

@@ -69,7 +69,7 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM cursos where deleted is null", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM cursos", sqlConn);
                 SqlDataReader drCursos = cmdUsuarios.ExecuteReader();
                 while (drCursos.Read())
                 {
@@ -243,7 +243,7 @@ namespace Data.Database
             try
             {
                 this.OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("UPDATE cursos SET deleted = 1 where id_curso=@id", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("delete cursos where id_curso=@id", sqlConn);
                 cmdDelete.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 cmdDelete.ExecuteNonQuery();
 

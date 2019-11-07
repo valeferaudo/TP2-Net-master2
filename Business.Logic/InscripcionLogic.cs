@@ -44,7 +44,7 @@ namespace Business.Logic
         }
         public void LogicDelete(int id)
         {
-            InscripcionData.LogicDelete(id);
+            //InscripcionData.LogicDelete(id);
         }
         
         
