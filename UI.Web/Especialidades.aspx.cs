@@ -105,6 +105,7 @@ namespace UI.Web
             this.SelectedID = (int)this.gridViewEspecialidad.SelectedValue;
             this.formPanel.Visible = false;
             this.ClearForm();
+            MostrarBotones();
         }
         private void LoadForm(int ID)
         {
@@ -116,6 +117,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
+                OcultarBotones();
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -170,7 +172,7 @@ namespace UI.Web
                     break;
             }
             this.LoadGrid();
-
+            MostrarBotones();
             this.formPanel.Visible = false;
         }
         private void EnableForm(bool enable)
@@ -184,6 +186,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
+                OcultarBotones();
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Baja;
                 this.EnableForm(false);
@@ -202,6 +205,7 @@ namespace UI.Web
             this.formMode = formModes.Alta;
             this.ClearForm();
             this.EnableForm(true);
+            OcultarBotones();
         }
         private void ClearForm()
         {
@@ -213,6 +217,19 @@ namespace UI.Web
         {
             this.formPanel.Visible = false;
             this.ClearForm();
+            MostrarBotones();
+        }
+        private void OcultarBotones()
+        {
+            nuevoLinkButton.Visible = false;
+            eliminarLinkButton.Visible = false;
+            editarLinkButton.Visible = false;
+        }
+        private void MostrarBotones()
+        {
+            nuevoLinkButton.Visible = true;
+            eliminarLinkButton.Visible = true;
+            editarLinkButton.Visible = true;
         }
     }
 }

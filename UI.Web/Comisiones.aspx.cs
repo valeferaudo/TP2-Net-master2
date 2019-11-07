@@ -132,7 +132,7 @@ namespace UI.Web
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.SelectedID = (int)Convert.ToInt32(this.gridViewComisiones.SelectedRow.Cells[0].Text);
-           
+            MostrarBotones();
             this.formPanel.Visible = false;
             this.ClearForm();
         }
@@ -163,7 +163,7 @@ namespace UI.Web
             
             if (this.IsEntitySelected)
             {
-                
+                OcultarBotones();
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
@@ -221,7 +221,7 @@ namespace UI.Web
                     break;
             }
             this.LoadGrid();
-
+            MostrarBotones();
             this.formPanel.Visible = false;
         }
         private void EnableForm(bool enable)
@@ -239,7 +239,7 @@ namespace UI.Web
         {
             if (this.IsEntitySelected)
             {
-                
+                OcultarBotones();
                 this.formMode = formModes.Baja;
                 this.EnableForm(false);
                 this.DeleteEntity(this.SelectedID);
@@ -253,7 +253,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            
+            OcultarBotones();
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
             this.ClearForm();
@@ -270,7 +270,7 @@ namespace UI.Web
 
         protected void cancelarLinkButton_Click(object sender, EventArgs e)
         {
-            
+            MostrarBotones();   
             this.formPanel.Visible = false;
             this.ClearForm();
         }
@@ -287,6 +287,18 @@ namespace UI.Web
 
                 DropDownList1.Items.Add(item);
             }
+        }
+        private void OcultarBotones()
+        {
+            nuevoLinkButton.Visible = false;
+            eliminarLinkButton.Visible = false;
+            editarLinkButton.Visible = false;
+        }
+        private void MostrarBotones()
+        {
+            nuevoLinkButton.Visible = true;
+            eliminarLinkButton.Visible = true;
+            editarLinkButton.Visible = true;
         }
     }
 }
