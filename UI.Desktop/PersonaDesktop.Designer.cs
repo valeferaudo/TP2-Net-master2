@@ -1,6 +1,6 @@
 ﻿namespace UI.Desktop
 {
-    partial class AlumnoDesktop
+    partial class PersonaDesktop
     {
         /// <summary>
         /// Required designer variable.
@@ -49,6 +49,8 @@
             this.cmbPlan = new System.Windows.Forms.ComboBox();
             this.txtLegajo = new System.Windows.Forms.MaskedTextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.cmbTipoPersona = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +81,8 @@
             this.tableLayoutPanel1.Controls.Add(this.cmbPlan, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.txtLegajo, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.dtpFecha, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cmbTipoPersona, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -91,7 +95,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(633, 161);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // label1
             // 
@@ -171,7 +174,6 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Telefono";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -185,7 +187,6 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Dirección";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // txtID
             // 
@@ -276,7 +277,6 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Fecha nacimiento";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -313,15 +313,33 @@
             this.dtpFecha.Size = new System.Drawing.Size(194, 20);
             this.dtpFecha.TabIndex = 24;
             // 
-            // AlumnoDesktop
+            // cmbTipoPersona
+            // 
+            this.cmbTipoPersona.FormattingEnabled = true;
+            this.cmbTipoPersona.Location = new System.Drawing.Point(88, 133);
+            this.cmbTipoPersona.Name = "cmbTipoPersona";
+            this.cmbTipoPersona.Size = new System.Drawing.Size(194, 21);
+            this.cmbTipoPersona.TabIndex = 25;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 139);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(70, 13);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Tipo Persona";
+            // 
+            // PersonaDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 161);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "AlumnoDesktop";
-            this.Text = "Alumnos";
+            this.Name = "PersonaDesktop";
+            this.Text = "Personas";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -351,5 +369,7 @@
         private System.Windows.Forms.ComboBox cmbPlan;
         private System.Windows.Forms.MaskedTextBox txtLegajo;
         private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.ComboBox cmbTipoPersona;
+        private System.Windows.Forms.Label label10;
     }
 }

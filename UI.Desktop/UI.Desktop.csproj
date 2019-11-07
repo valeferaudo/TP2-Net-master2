@@ -141,11 +141,17 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="AlumnoDesktop.cs">
+    <Compile Include="Persona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AlumnoDesktop.Designer.cs">
-      <DependentUpon>AlumnoDesktop.cs</DependentUpon>
+    <Compile Include="Persona.Designer.cs">
+      <DependentUpon>Persona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonaDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonaDesktop.Designer.cs">
+      <DependentUpon>PersonaDesktop.cs</DependentUpon>
     </Compile>
     <Compile Include="Materias.cs">
       <SubType>Form</SubType>
@@ -242,8 +248,11 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AlumnoDesktop.resx">
-      <DependentUpon>AlumnoDesktop.cs</DependentUpon>
+    <EmbeddedResource Include="Persona.resx">
+      <DependentUpon>Persona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonaDesktop.resx">
+      <DependentUpon>PersonaDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Materias.resx">
       <DependentUpon>Materias.cs</DependentUpon>
