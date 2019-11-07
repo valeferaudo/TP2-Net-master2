@@ -15,12 +15,14 @@ namespace UI.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
+           
             if (!IsPostBack)
             {
                 Session["AlumnoInscSel"] = null;
             }
+
             PersonaLogic pl = new PersonaLogic();
+            Usuario usuario = new Usuario();
             if (Session["UsuarioSesion"] != null){
                 usuario = (Usuario)Session["UsuarioSesion"];
             }

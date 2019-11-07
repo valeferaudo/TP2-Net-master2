@@ -14,6 +14,11 @@ namespace UI.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = new Usuario();
+            if (Session["UsuarioSesion"] != null)
+            {
+                usuario = (Usuario)Session["UsuarioSesion"];
+            }
             Session["AlumnoInscSel"] = null;
 
             if (Session["UsuarioSesion"] == null)
@@ -32,7 +37,7 @@ namespace UI.Web
                     this.LoadGrid();
                 }
                 PersonaLogic pl = new PersonaLogic();
-                Usuario usuario = (Usuario)Session["UsuarioSesion"];
+                usuario = (Usuario)Session["UsuarioSesion"];
                 if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin) && !(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Docente))
                 {
                     Response.Redirect("~/Default.aspx");

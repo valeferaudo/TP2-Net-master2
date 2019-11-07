@@ -23,9 +23,16 @@ namespace UI.Web
             Panel1.Visible = false;
             Panel2.Visible = false;
             PersonaLogic pl = new PersonaLogic();
-            usuario = (Usuario)Session["UsuarioSesion"];
             
-            if(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Alumno)
+            if (Session["UsuarioSesion"] != null)
+            {
+                usuario = (Usuario)Session["UsuarioSesion"];
+            }
+            else
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+            if (pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Alumno)
             {
                 btnCalificar.Visible = false;
                 btnCalificar.Enabled = false;
