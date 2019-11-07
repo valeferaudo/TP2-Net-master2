@@ -14,75 +14,72 @@ using Util;
 
 namespace UI.Desktop
 {
-    public partial class AlumnoDesktop : UI.Desktop.Abm
+    public partial class PersonaDesktop : UI.Desktop.Abm
    
     {
         PersonaLogic pl = new PersonaLogic();
         String modostr;
         
-        public AlumnoDesktop()
+        public PersonaDesktop()
         {
             InitializeComponent();
             
             
         }
-        public AlumnoDesktop(ModoForm modo) : this()
+        public PersonaDesktop(ModoForm modo) : this()
         {
             ModoForm value = modo;
             modostr = modo.ToString();
             Settextobtnaceptar();
             listplanesfill();
+            CargarComboTipo();
         }
-        public AlumnoDesktop(int idper, ModoForm modo) : this()
+        public PersonaDesktop(int idper, ModoForm modo) : this()
         {
             ModoForm value = modo;
             modostr = modo.ToString();
             
-            AlumnoActual = pl.GetOne(idper);
+            PersonaActual = pl.GetOne(idper);
             MapearDeDatos();
             Settextobtnaceptar();
             listplanesfill();
-            
+            CargarComboTipo();
+
 
         }
         
         
         
-        private Personas _AlumnoActual;
-        public Personas AlumnoActual
+        private Personas _PersonaActual;
+        public Personas PersonaActual
         {
-            get { return _AlumnoActual; }
-            set { _AlumnoActual = value; }
+            get { return _PersonaActual; }
+            set { _PersonaActual = value; }
         }
 
         public void MapearDeDatos() {
 
             
 
-            this.txtID.Text = this.AlumnoActual.ID.ToString();
-            
-            this.txtNombre.Text = this.AlumnoActual.Nombre;
-            this.txtApellido.Text = this.AlumnoActual.Apellido;
-            this.txtDireccion.Text = this.AlumnoActual.Direccion;
-            this.txtLegajo.Text = this.AlumnoActual.Legajo.ToString();
-            this.txtTel.Text = this.AlumnoActual.Telefono;
-            this.txtEmail.Text = this.AlumnoActual.Email;
-            this.dtpFecha.Value = this.AlumnoActual.FechaNacimiento;
-           
-            
-
-
-
-
+            this.txtID.Text = this.PersonaActual.ID.ToString();
+            this.cmbTipoPersona.SelectedValue = this.PersonaActual.TipoPersona;
+            this.txtNombre.Text = this.PersonaActual.Nombre;
+            this.txtApellido.Text = this.PersonaActual.Apellido;
+            this.txtDireccion.Text = this.PersonaActual.Direccion;
+            this.txtLegajo.Text = this.PersonaActual.Legajo.ToString();
+            this.txtTel.Text = this.PersonaActual.Telefono;
+            this.txtEmail.Text = this.PersonaActual.Email;
+            this.dtpFecha.Value = this.PersonaActual.FechaNacimiento;
+               
         }
         public virtual void MapearADatos() {
             
 
             if (modostr == "Alta")
             {
-                AlumnoActual = new Personas();
-                AlumnoActual.TipoPersona = Personas.tipopersona.Alumno;
-                AlumnoActual.State = Personas.States.New;
+                PersonaActual = new Personas();
+                
+                PersonaActual.State = Personas.States.New;
             }
             if ((modostr == "Modificacion" ) || (modostr == "Alta"))
             {
@@ -90,32 +87,33 @@ namespace UI.Desktop
                 PlanLogic pllgc = new PlanLogic();
                 List<Plan> planes = pllgc.GetAll();
                 nroplan = planes[cmbPlan.SelectedIndex].ID;
-                AlumnoActual.Nombre = txtNombre.Text;
-                AlumnoActual.Apellido = txtApellido.Text;
-                AlumnoActual.Email = txtEmail.Text;
-                AlumnoActual.Telefono = txtTel.Text;
-                AlumnoActual.Legajo = Int32.Parse(txtLegajo.Text);
-                AlumnoActual.IDPlan = nroplan;
-                AlumnoActual.FechaNacimiento = dtpFecha.Value;
-                AlumnoActual.Direccion = txtDireccion.Text;
-
-
+                PersonaActual.Nombre = txtNombre.Text;
+                PersonaActual.Apellido = txtApellido.Text;
+                PersonaActual.Email = txtEmail.Text;
+                PersonaActual.Telefono = txtTel.Text;
+                PersonaActual.Legajo = Int32.Parse(txtLegajo.Text);
+                PersonaActual.IDPlan = nroplan;
+                PersonaActual.FechaNacimiento = dtpFecha.Value;
+                PersonaActual.Direccion = txtDireccion.Text;
+                PersonaLogic pl = new PersonaLogic();
+                List<Personas> personas = pl.GetAll();
+                //PersonaActual.TipoPersona = personas[cmbTipoPersona.SelectedIndex].TipoPersona;
+                //PersonaActual.TipoPersona = personas[Convert.ToInt32(cmbTipoPersona.SelectedValue)].TipoPersona;
+                
             }
             if (modostr == "Modificacion")
             {
-                AlumnoActual.State = Usuario.States.Modified;
+                PersonaActual.State = Usuario.States.Modified;
             }
            if (modostr == "Baja")
-            {
-               
-                
-                AlumnoActual.State = Usuario.States.Deleted;
-                //ul.Delete(UsuarioActual.ID);
+            {            
+                PersonaActual.State = Usuario.States.Deleted;
+                //ul.Delete(PersonaActual.ID);
             }
             if (modostr == "Consulta")
             {
 
-                AlumnoActual.State = Usuario.States.Unmodified;
+                PersonaActual.State = Usuario.States.Unmodified;
             }
             
         }
@@ -123,7 +121,7 @@ namespace UI.Desktop
             MapearADatos();
             
             
-                pl.Save(AlumnoActual);
+                pl.Save(PersonaActual);
             
 
         }
@@ -170,11 +168,7 @@ namespace UI.Desktop
         {
 
         }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+               
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -193,9 +187,9 @@ namespace UI.Desktop
                 //PENDIENTE : AGREGAR ESPECIALIDAD DEL PLAN Y CONCATENAR
                 cmbPlan.Items.Add(value.Descripcion);
             }
-            if (AlumnoActual != null)
+            if (PersonaActual != null)
             {
-                string plstr = pllgc.GetOne(AlumnoActual.IDPlan).Descripcion;
+                string plstr = pllgc.GetOne(PersonaActual.IDPlan).Descripcion;
                 cmbPlan.SelectedIndex = cmbPlan.FindStringExact(plstr);
             }
         }
@@ -231,30 +225,10 @@ namespace UI.Desktop
                 btnAceptar.Text = "Aceptar";
             }
         }
-
-        private void label7_Click(object sender, EventArgs e)
+          public void CargarComboTipo()
         {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtFecha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+            cmbTipoPersona.DataSource = Enum.GetValues(typeof(Personas.tipopersona));
+            cmbTipoPersona.SelectedIndex = -1;
+        }    
     }
 }

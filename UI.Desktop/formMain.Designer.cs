@@ -78,21 +78,21 @@
             // mnuSalir
             // 
             this.mnuSalir.Name = "mnuSalir";
-            this.mnuSalir.Size = new System.Drawing.Size(180, 22);
+            this.mnuSalir.Size = new System.Drawing.Size(149, 22);
             this.mnuSalir.Text = "Salir";
             this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
             // 
             // reportePlanToolStripMenuItem
             // 
             this.reportePlanToolStripMenuItem.Name = "reportePlanToolStripMenuItem";
-            this.reportePlanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportePlanToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.reportePlanToolStripMenuItem.Text = "Reporte Plan";
             this.reportePlanToolStripMenuItem.Click += new System.EventHandler(this.reportePlanToolStripMenuItem_Click);
             // 
             // reporteCursoToolStripMenuItem
             // 
             this.reporteCursoToolStripMenuItem.Name = "reporteCursoToolStripMenuItem";
-            this.reporteCursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reporteCursoToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.reporteCursoToolStripMenuItem.Text = "Reporte Curso";
             this.reporteCursoToolStripMenuItem.Click += new System.EventHandler(this.reporteCursoToolStripMenuItem_Click);
             // 
@@ -106,8 +106,8 @@
             // alumnosToolStripMenuItem
             // 
             this.alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.alumnosToolStripMenuItem.Text = "Alumnos";
+            this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.alumnosToolStripMenuItem.Text = "Personas";
             this.alumnosToolStripMenuItem.Click += new System.EventHandler(this.alumnosToolStripMenuItem_Click);
             // 
             // inscripcionesToolStripMenuItem

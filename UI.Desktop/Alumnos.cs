@@ -21,11 +21,7 @@ namespace UI.Desktop
         PlanLogic pllog = new PlanLogic();
 
         public void Listar()
-        {
-            
-            
-
-
+        {                
             PersonaLogic pl = new PersonaLogic();
             this.dgvAlumnos.DataSource = pl.GetAllAlumnos();
             
@@ -65,32 +61,32 @@ namespace UI.Desktop
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            AlumnoDesktop ud = new AlumnoDesktop(Abm.ModoForm.Alta);
+           /* PersonaDesktop ud = new PersonaDesktop(Abm.ModoForm.Alta);
             ud.ShowDialog();
-            this.Listar();
+            this.Listar();*/
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
-            if (dgvAlumnos.SelectedRows != null)
+           /* if (dgvAlumnos.SelectedRows != null)
             {
                 int ID = ((Business.Entities.Personas)this.dgvAlumnos.SelectedRows[0].DataBoundItem).ID;
-                AlumnoDesktop ud = new AlumnoDesktop(ID, Abm.ModoForm.Modificacion);
+                PersonaDesktop ud = new PersonaDesktop(ID, Abm.ModoForm.Modificacion);
                 ud.ShowDialog();
                 this.Listar();
-            }
+            }*/
             
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvAlumnos.SelectedRows != null)
+            /*if (dgvAlumnos.SelectedRows != null)
             {
                 int ID = ((Business.Entities.Personas)this.dgvAlumnos.SelectedRows[0].DataBoundItem).ID;
-                AlumnoDesktop ud = new AlumnoDesktop(ID, Abm.ModoForm.Baja);
+                PersonaDesktop ud = new PersonaDesktop(ID, Abm.ModoForm.Baja);
                 ud.ShowDialog();
                 this.Listar();
-            }
+            }*/
         }
 
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)

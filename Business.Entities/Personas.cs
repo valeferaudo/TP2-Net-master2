@@ -65,7 +65,7 @@ namespace Business.Entities
         }
         public enum tipopersona
         {
-            Alumno,
+            Alumno = 1,
             Docente,
             Admin
            

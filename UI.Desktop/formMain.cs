@@ -55,8 +55,8 @@ namespace UI.Desktop
 
         private void alumnosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form al = new Alumnos();
-            al.Show();
+            Form per = new Persona();
+            per.Show();
         }
         
         private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
