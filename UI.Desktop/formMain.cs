@@ -97,6 +97,8 @@ namespace UI.Desktop
                     this.comisionesToolStripMenuItem.Visible = false;
                     this.materiasToolStripMenuItem.Visible = false;
                     this.toolStripMenuItem1.Visible = false;
+                    this.reporteCursoToolStripMenuItem.Visible = false;
+                    this.reportePlanToolStripMenuItem.Visible = false;
                     
                 }
                 if (per.TipoPersona == Personas.tipopersona.Docente)
