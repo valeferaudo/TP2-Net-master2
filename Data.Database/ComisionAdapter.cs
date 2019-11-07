@@ -68,7 +68,7 @@ namespace Data.Database
             try { 
                 this.OpenConnection();
                 
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM comisiones where deleted is null", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM comisiones", sqlConn);
                 SqlDataReader drComision = cmdUsuarios.ExecuteReader();
                 while (drComision.Read())
                 {
