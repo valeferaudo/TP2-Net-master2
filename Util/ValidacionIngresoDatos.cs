@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Util
 {
@@ -25,14 +26,14 @@ namespace Util
             return result;
         }
         public static bool EsMail(string email)
-        { //hacerlo con expresion regular
-            try
-            {
-                MailAddress m = new MailAddress(email);
-
+        {
+            string expresion = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@(([a-zA-Z]+[\\w-]+\\.){1,2}[a-zA-Z]{2,4})$";
+            if (Regex.IsMatch(email,expresion))
+                {
                 return true;
-            }
-            catch (FormatException)
+                
+                }
+            else
             {
                 return false;
             }

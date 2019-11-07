@@ -114,7 +114,7 @@ namespace UI.Desktop
         }
         public virtual bool Validar() {
             bool ok=false;
-            if (txtApellido.Text != "" && txtNombre.Text != "" && txtUsuario.Text != "" && txtEmail.Text != "" && txtClave.Text != "")
+            if (txtApellido.Text != "" && txtNombre.Text != "" && txtUsuario.Text != "" && txtEmail.Text != "" && txtClave.Text != "" && cmbPersonas.SelectedIndex != -1)
             {
                 if(txtClave.TextLength > 7)
                 {

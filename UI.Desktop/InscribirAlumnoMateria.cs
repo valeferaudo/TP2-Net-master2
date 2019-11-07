@@ -72,6 +72,10 @@ namespace UI.Desktop
                 this.Inscribir();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Seleccione algún Curso");
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Business.Logic;
 using Business.Entities;
 using UI.Desktop;
+using Util;
 
 namespace UI.Desktop
 {
@@ -130,8 +131,20 @@ namespace UI.Desktop
             bool ok=false;
             if (txtApellido.Text != "" && txtNombre.Text != "" && txtEmail.Text != "" && txtLegajo.Text != "" && txtTel.Text != "" && txtDireccion.Text != "" && cmbPlan.SelectedIndex != -1 )
             {
+                if (ValidacionIngresoDatos.EsMail(txtEmail.Text))
 
-                ok = true;
+                {
+                    if (ValidacionIngresoDatos.EsNumero(txtTel.Text))
+                    { ok = true; }
+                    else
+                    {
+                        Notificar("Error", "El telefono es inválido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                }
+                else
+                {
+                    Notificar("Error", "El mail es inválido", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
             }
             else
             {

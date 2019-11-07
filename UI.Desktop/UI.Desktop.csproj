@@ -316,6 +316,10 @@
       <Project>{8ce1547d-0300-4a8b-9c28-f769cb6f93e6}</Project>
       <Name>Business.Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{0c363494-7fa4-4105-bb97-f0803e5be36f}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />

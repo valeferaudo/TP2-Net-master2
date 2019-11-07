@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Entities;
 using Business.Logic;
+using Util;
 
 namespace UI.Desktop
 {
@@ -132,13 +133,25 @@ namespace UI.Desktop
 
         public override bool Validar()
         {
-            //COMPROBAR QUE SE LLENE EL CAMPO IDPLAN
-            if (!(this.txtDescripcion.Text != "" && this.txtAnioEspe.Text != ""  && cbIDPlan.SelectedIndex != -1))
+            
+            if ((this.txtDescripcion.Text != "" && this.txtAnioEspe.Text != ""  && cbIDPlan.SelectedIndex != -1))
+            {
+                if (ValidacionIngresoDatos.EsNumero(txtAnioEspe.Text))
+                {
+                    return true;
+                }
+                else
+                {
+                    Notificar("Error en llenado de campos", "Ingrese un año de especialidad correcto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else
             {
                 Notificar("Error en llenado de campos", "Alguno de los campos se encuentra vacio", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            return true;
+           
         }
 
         public void SetCBComision()

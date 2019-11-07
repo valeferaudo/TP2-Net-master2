@@ -37,7 +37,7 @@ namespace UI.Desktop
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text != "")
+            if (maskedTextBox1.Text != "" && comboBox1.SelectedIndex != -1)
             {
                 InscripcionLogic il = new InscripcionLogic();
                 AlumnoInscripcion ai = new AlumnoInscripcion();
@@ -47,6 +47,10 @@ namespace UI.Desktop
                 ai.State = BusinessEntity.States.Modified;
                 il.Save(ai);
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Algún campo quedo sin completar");
             }
         }
     }
