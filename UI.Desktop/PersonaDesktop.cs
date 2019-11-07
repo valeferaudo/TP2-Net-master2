@@ -94,11 +94,11 @@ namespace UI.Desktop
                 PersonaActual.FechaNacimiento = dtpFecha.Value;
                 PersonaActual.Direccion = txtDireccion.Text;
 
-                if (cmbTipoPersona.ValueMember == "Alumno")
+                if (cmbTipoPersona.SelectedValue.ToString() == "Alumno")
                 { PersonaActual.TipoPersona = Personas.tipopersona.Alumno; }
-                if (cmbTipoPersona.ValueMember == "Docente")
+                if (cmbTipoPersona.SelectedValue.ToString() == "Docente")
                 { PersonaActual.TipoPersona = Personas.tipopersona.Docente; }
-                if (cmbTipoPersona.ValueMember == "Admin")
+                if (cmbTipoPersona.SelectedValue.ToString() == "Admin")
                 { PersonaActual.TipoPersona = Personas.tipopersona.Admin; }
             }
             if (modostr == "Modificacion")
