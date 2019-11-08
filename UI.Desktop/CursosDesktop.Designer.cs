@@ -31,16 +31,16 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtCupo = new System.Windows.Forms.TextBox();
             this.txtAnio = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.Cancelar = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
-            this.cbComision = new System.Windows.Forms.ComboBox();
             this.cbMateria = new System.Windows.Forms.ComboBox();
+            this.cbComision = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,16 +51,16 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.txtCupo, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtAnio, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.Cancelar, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.txtID, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cbComision, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.cbMateria, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.cbMateria, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cbComision, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -91,16 +91,6 @@
             this.txtAnio.Size = new System.Drawing.Size(100, 20);
             this.txtAnio.TabIndex = 8;
             // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(182, 227);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Materia";
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -110,16 +100,6 @@
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID Curso";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(175, 176);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Comision";
             // 
             // label3
             // 
@@ -172,23 +152,44 @@
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 7;
             // 
-            // cbComision
-            // 
-            this.cbComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbComision.FormattingEnabled = true;
-            this.cbComision.Location = new System.Drawing.Point(230, 172);
-            this.cbComision.Name = "cbComision";
-            this.cbComision.Size = new System.Drawing.Size(121, 21);
-            this.cbComision.TabIndex = 10;
-            // 
             // cbMateria
             // 
             this.cbMateria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbMateria.FormattingEnabled = true;
-            this.cbMateria.Location = new System.Drawing.Point(230, 223);
+            this.cbMateria.Location = new System.Drawing.Point(230, 172);
             this.cbMateria.Name = "cbMateria";
             this.cbMateria.Size = new System.Drawing.Size(121, 21);
             this.cbMateria.TabIndex = 11;
+            this.cbMateria.SelectionChangeCommitted += new System.EventHandler(this.cbMateria_SelectionChangeCommitted);
+            // 
+            // cbComision
+            // 
+            this.cbComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbComision.FormattingEnabled = true;
+            this.cbComision.Location = new System.Drawing.Point(230, 223);
+            this.cbComision.Name = "cbComision";
+            this.cbComision.Size = new System.Drawing.Size(121, 21);
+            this.cbComision.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(175, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Comision";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(182, 176);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Materia";
             // 
             // CursosDesktop
             // 
@@ -198,6 +199,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CursosDesktop";
             this.Text = "CursosDesktop";
+            this.Load += new System.EventHandler(this.CursosDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

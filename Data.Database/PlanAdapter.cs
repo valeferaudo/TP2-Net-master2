@@ -233,6 +233,35 @@ namespace Data.Database
             }
             plan.State = BusinessEntity.States.Unmodified;            
         }
-        
+        public List<Plan> TraerPorEspecialidad(int id)
+        {
+            List<Plan> planes = new List<Plan>();
+
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdPlanes = new SqlCommand("SELECT * FROM planes where id_especialidad=@espe", sqlConn);
+                cmdPlanes.Parameters.Add("@espe", SqlDbType.Int).Value = id;
+                SqlDataReader drPlanes = cmdPlanes.ExecuteReader();
+                while (drPlanes.Read())
+                {
+                    Plan pl = new Plan();
+                    pl.ID = (int)drPlanes["id_plan"];
+                    pl.Descripcion = (string)drPlanes["desc_plan"];
+                    pl.IDEspecialidad = (int)drPlanes["id_especialidad"];
+                    planes.Add(pl);
+
+                }
+                drPlanes.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de planes por especialidad", Ex);
+                throw ExcepcionManejada;
+            }
+            this.CloseConnection();
+            return planes;
+        }
     }
 }

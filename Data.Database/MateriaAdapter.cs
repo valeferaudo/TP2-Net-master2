@@ -172,5 +172,38 @@ namespace Data.Database
             }
             materia.State = BusinessEntity.States.Unmodified;
         }
+        public List<Materia> TrearPorPlan(int plan)
+        {
+            List<Materia> materias = new List<Materia>();
+
+            try
+            {
+                this.OpenConnection();
+
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM materias where id_plan=@plan ", sqlConn);
+                cmdUsuarios.Parameters.Add("@plan", SqlDbType.Int).Value = plan;
+                SqlDataReader drMaterias = cmdUsuarios.ExecuteReader();
+                while (drMaterias.Read())
+                {
+                    Materia mat = new Materia();
+                    mat.ID = (int)drMaterias["id_materia"];
+                    mat.HSSemanales = (int)drMaterias["hs_semanales"];
+                    mat.HSTotales = (int)drMaterias["hs_totales"];
+                    mat.IDPlan = (int)drMaterias["id_plan"];
+                    mat.Descripcion = (string)drMaterias["desc_materia"];
+
+                    materias.Add(mat);
+
+                }
+                drMaterias.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de materias", Ex);
+                throw ExcepcionManejada;
+            }
+            this.CloseConnection();
+            return materias;
+        }
     }
 }

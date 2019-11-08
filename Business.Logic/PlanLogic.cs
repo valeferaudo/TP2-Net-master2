@@ -36,6 +36,10 @@ namespace Business.Logic
         {
             PlanData.Save(pl);
         }
+        public List<Plan> TraerPorEspecialidad(int id)
+        {
+            return PlanData.TraerPorEspecialidad(id);
+        }
      
     }
     

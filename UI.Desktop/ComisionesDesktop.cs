@@ -93,8 +93,8 @@ namespace UI.Desktop
                         this.ComisionActual.Descripcion = this.txtDescripcion.Text;
                         this.ComisionActual.State = Business.Entities.Plan.States.New;
                         this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspe.Text);
-                        ComboboxItem cbi = (ComboboxItem)this.cbIDPlan.SelectedItem;
-                        this.ComisionActual.IDPlan = cbi.Value;
+                        
+                        this.ComisionActual.IDPlan = Convert.ToInt32(cbIDPlan.SelectedValue);
                     }
                     break;
                 case ModoForm.Modificacion:
@@ -103,9 +103,7 @@ namespace UI.Desktop
                         this.ComisionActual.Descripcion = this.txtDescripcion.Text;
                         this.ComisionActual.AnioEspecialidad = Int32.Parse(this.txtAnioEspe.Text);
                         this.ComisionActual.State = Business.Entities.Plan.States.Modified;
-                        ComboboxItem cbi = (ComboboxItem)this.cbIDPlan.SelectedItem;
-                        this.ComisionActual.IDPlan = cbi.Value;
-                       
+                        this.ComisionActual.IDPlan = Convert.ToInt32(cbIDPlan.SelectedValue);
                     }
                     break;
                 case ModoForm.Baja:
@@ -134,7 +132,7 @@ namespace UI.Desktop
             }
             catch(Exception e)
             {
-                MessageBox.Show("No se puede eliminar la comision porque hay registros relacionados a esta");
+                MessageBox.Show("No se puede eliminar la Comision porque hay Cursos relacionados a esta");
             }
         }
 
@@ -191,8 +189,12 @@ namespace UI.Desktop
         public void SetCBComision()
         {
             PlanLogic pl = new PlanLogic();
-              List<Plan> planes = new List<Plan>();
-              planes = pl.GetAll();
+
+            List<Plan> planes = new List<Plan>();
+
+            if (ComisionActual != null)
+            {
+                planes = pl.TraerPorEspecialidad(pl.GetOne(ComisionActual.IDPlan).IDEspecialidad);
               foreach (Plan plan in planes)
               {
                   ComboboxItem item = new ComboboxItem();
@@ -201,10 +203,16 @@ namespace UI.Desktop
 
                   cbIDPlan.Items.Add(item);
               }
-            if (ComisionActual != null)
+            string plstr = pl.GetOne(ComisionActual.IDPlan).Descripcion;
+            cbIDPlan.SelectedIndex = cbIDPlan.FindStringExact(plstr);
+                      
+            }
+            else
             {
-                string plstr = pl.GetOne(ComisionActual.IDPlan).Descripcion;
-                cbIDPlan.SelectedIndex = cbIDPlan.FindStringExact(plstr);
+                cbIDPlan.DataSource = pl.GetAll();
+                cbIDPlan.DisplayMember = "Descripcion";
+                cbIDPlan.ValueMember = "ID" ;
+                cbIDPlan.SelectedIndex = -1;
             }
         }
 

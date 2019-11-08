@@ -37,8 +37,7 @@ namespace UI.Desktop
         public CursosDesktop(ModoForm modo) : this()
         {
             this.Modo = modo;
-            this.SetCBComision();
-            this.SetCBMateria();
+            SetCBMateria();
         }
         public CursosDesktop(int ID, ModoForm modo) : this()
         {
@@ -46,8 +45,8 @@ namespace UI.Desktop
             CursoLogic cl = new CursoLogic();
             CursoActual = cl.GetOne(ID);
             MapearDeDatos();
-            this.SetCBComision();
-            this.SetCBMateria();
+            SetCBMateria();
+                      
         }
         public override void MapearDeDatos()
 
@@ -93,10 +92,8 @@ namespace UI.Desktop
                         this.CursoActual = cur;
                         this.CursoActual.AnioCalendario = int.Parse(this.txtAnio.Text);
                         this.CursoActual.Cupo = int.Parse(this.txtCupo.Text);
-                        ComboboxItem cbc = (ComboboxItem)this.cbComision.SelectedItem;
-                        this.CursoActual.IDComision = cbc.Value;
-                        ComboboxItem cbm = (ComboboxItem)this.cbMateria.SelectedItem;
-                        this.CursoActual.IDMateria = cbm.Value;
+                        this.CursoActual.IDComision = Convert.ToInt32(cbComision.SelectedValue);
+                        this.CursoActual.IDMateria = Convert.ToInt32(cbMateria.SelectedValue);
                         this.CursoActual.State = Business.Entities.Curso.States.New;
                     }
                     break;
@@ -104,10 +101,8 @@ namespace UI.Desktop
                     {
                         this.CursoActual.AnioCalendario = int.Parse(this.txtAnio.Text);
                         this.CursoActual.Cupo = int.Parse(this.txtCupo.Text);
-                        ComboboxItem cbc = (ComboboxItem)this.cbComision.SelectedItem;
-                        this.CursoActual.IDComision = cbc.Value;
-                        ComboboxItem cbm = (ComboboxItem)this.cbMateria.SelectedItem;
-                        this.CursoActual.IDMateria = cbm.Value;
+                        this.CursoActual.IDComision = Convert.ToInt32(cbComision.SelectedValue);
+                        this.CursoActual.IDMateria = Convert.ToInt32(cbMateria.SelectedValue);
                         this.CursoActual.State = Business.Entities.Curso.States.Modified;
 
                     }
@@ -137,47 +132,43 @@ namespace UI.Desktop
             }
             catch(Exception e)
             {
-                MessageBox.Show("No se puede eliminar el curso porque ya hay alumnos inscriptos");
+                MessageBox.Show("No se puede eliminar el Curso porque ya hay Alumnos y/o Docentes inscriptos");
             }
         }
-        public void SetCBComision()
+        public void SetCBComision(int id)
         {
             ComisionLogic cl = new ComisionLogic();
             List<Comision> comisiones = new List<Comision>();
-            comisiones = cl.GetAll();
-
-            foreach (Comision comi in comisiones)
-            {
-                ComboboxItem item = new ComboboxItem();
-                item.Text = comi.Descripcion;
-                item.Value = comi.ID;
-
-                cbComision.Items.Add(item);
-            }
+            MateriaLogic ml = new MateriaLogic();
+            cbComision.DataSource = cl.TraerPorPlan(ml.GetOne(id).IDPlan);
+            cbComision.DisplayMember = "Descripcion";
+            cbComision.ValueMember = "ID";
+            cbComision.SelectedIndex = -1;
             if (CursoActual != null)
             {
                 string plstr = cl.GetOne(CursoActual.IDComision).Descripcion;
                 cbComision.SelectedIndex = cbComision.FindStringExact(plstr);
-            }
+            }               
         }
         public void SetCBMateria()
         {
             MateriaLogic ml = new MateriaLogic();
             List<Materia> materias = new List<Materia>();
-            materias = ml.GetAll();
-
-            foreach (Materia mat in materias)
-            {
-                ComboboxItem item = new ComboboxItem();
-                item.Text = mat.Descripcion;
-                item.Value = mat.ID;
-
-                cbMateria.Items.Add(item);
-            }
             if (CursoActual != null)
             {
+                cbMateria.DataSource = ml.TraerPorPlan((ml.GetOne(CursoActual.IDMateria)).IDPlan);
+                cbMateria.DisplayMember = "Descripcion";
+                cbMateria.ValueMember = "ID";
                 string plstr = ml.GetOne(CursoActual.IDMateria).Descripcion;
                 cbMateria.SelectedIndex = cbMateria.FindStringExact(plstr);
+            }
+                       
+            else
+            {
+                cbMateria.DataSource = ml.GetAll();
+                cbMateria.DisplayMember = "Descripcion";
+                cbMateria.ValueMember = "ID";
+                cbMateria.SelectedIndex = -1;
             }
         }
 
@@ -251,6 +242,21 @@ namespace UI.Desktop
         private void Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        
+
+        private void cbMateria_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int mat = Convert.ToInt32(cbMateria.SelectedValue);
+            SetCBComision(mat);
+            cbComision.Enabled = true;
+        }
+
+        private void CursosDesktop_Load(object sender, EventArgs e)
+        {
+            this.SetCBMateria();
+            cbComision.Enabled = false;
         }
     }
 }

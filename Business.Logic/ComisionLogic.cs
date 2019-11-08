@@ -36,6 +36,10 @@ namespace Business.Logic
         {
             ComisionData.Save(com);
         }
+        public List<Comision>TraerPorPlan(int plan)
+        {
+            return ComisionData.TraerPorPlan(plan);
+        }
         
     }
     

@@ -36,7 +36,10 @@ namespace Business.Logic
         {
             MateriaData.Save(cr);
         }
-        
+        public List<Materia> TraerPorPlan(int id)
+        {
+            return MateriaData.TrearPorPlan(id);
+        }
     }
     
 }

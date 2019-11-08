@@ -128,7 +128,7 @@ namespace UI.Desktop
             }
             catch(Exception e)
             {
-                MessageBox.Show("No se puede eliminar el plan porque ya hay materias asociadas al mismo");
+                Notificar("No se puede eliminar el Plan porque ya hay materias y/o comosiones y/o personas asociadas al mismo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

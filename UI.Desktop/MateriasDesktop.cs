@@ -94,8 +94,7 @@ namespace UI.Desktop
                         this.MateriaActual.Descripcion = this.txtDescripcion.Text;
                         this.MateriaActual.HSSemanales = int.Parse(this.txtHsSemanales.Text);
                         this.MateriaActual.HSTotales = int.Parse(this.txtHsTotales.Text);
-                        ComboboxItem cbi = (ComboboxItem)this.cbDescPlan.SelectedItem;
-                        this.MateriaActual.IDPlan = cbi.Value;
+                        this.MateriaActual.IDPlan = Convert.ToInt32(cbDescPlan.SelectedValue);
                         this.MateriaActual.State = Business.Entities.Materia.States.New;
                     }
                     break;
@@ -104,8 +103,7 @@ namespace UI.Desktop
                         this.MateriaActual.Descripcion = this.txtDescripcion.Text;
                         this.MateriaActual.HSSemanales = int.Parse(this.txtHsSemanales.Text);
                         this.MateriaActual.HSTotales = int.Parse(this.txtHsTotales.Text);
-                        ComboboxItem cbi = (ComboboxItem)this.cbDescPlan.SelectedItem;
-                        this.MateriaActual.IDPlan = cbi.Value;
+                        this.MateriaActual.IDPlan = Convert.ToInt32(cbDescPlan.SelectedValue);
                         this.MateriaActual.State = Business.Entities.Materia.States.Modified;
                     }
                     break;
@@ -134,7 +132,7 @@ namespace UI.Desktop
             }
             catch(Exception e)
             {
-                MessageBox.Show("No se puede eliminar la materia porque existen cursos asociadas a esta");
+                MessageBox.Show("No se puede eliminar la Materia porque existen Cursos asociadas a esta");
             }
         }
 
@@ -213,21 +211,29 @@ namespace UI.Desktop
         {
             PlanLogic pl = new PlanLogic();
             List<Plan> planes = new List<Plan>();
-            planes = pl.GetAll();
-
-            foreach (Plan espe in planes)
-            {
-                ComboboxItem item = new ComboboxItem();
-                item.Text = espe.Descripcion;
-                item.Value = espe.ID;
-
-                cbDescPlan.Items.Add(item);
-            }
             if (MateriaActual != null)
             {
+                planes = pl.TraerPorEspecialidad(pl.GetOne(MateriaActual.IDPlan).IDEspecialidad);
+
+                foreach (Plan espe in planes)
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = espe.Descripcion;
+                    item.Value = espe.ID;
+
+                    cbDescPlan.Items.Add(item);
+                }
                 string plstr = pl.GetOne(MateriaActual.IDPlan).Descripcion;
                 cbDescPlan.SelectedIndex = cbDescPlan.FindStringExact(plstr);
             }
+            else
+            {
+                cbDescPlan.DataSource = pl.GetAll();
+                cbDescPlan.DisplayMember = "Descripcion";
+                cbDescPlan.ValueMember = "ID";
+                cbDescPlan.SelectedValue = -1;
+            } 
+            
         }
     }
 }
