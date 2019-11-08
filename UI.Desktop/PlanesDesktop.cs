@@ -122,7 +122,14 @@ namespace UI.Desktop
         {
             this.MapearADatos();
             PlanLogic pl = new PlanLogic();
-            pl.Save(PlanActual);
+            try
+            {
+                pl.Save(PlanActual);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("No se puede eliminar el plan porque ya hay materias asociadas al mismo");
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

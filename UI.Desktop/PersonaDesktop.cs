@@ -119,10 +119,15 @@ namespace UI.Desktop
         }
         public virtual void GuardarCambios() {
             MapearADatos();
-            
-            
+
+            try
+            {
                 pl.Save(PersonaActual);
-            
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("No se puede eliminar esta persona porque otros registros dependen de esta");
+            }
 
         }
         public override bool Validar()

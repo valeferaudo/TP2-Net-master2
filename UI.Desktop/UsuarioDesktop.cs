@@ -107,10 +107,15 @@ namespace UI.Desktop
         }
         public virtual void GuardarCambios() {
             MapearADatos();
-            
-            
+
+            try
+            {
                 ul.Save(UsuarioActual);
-            
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("No se puede eliminar el usuario porque hay registros que dependen del mismo");
+            }
 
         }
         public virtual bool Validar() {

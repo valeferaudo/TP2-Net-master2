@@ -125,9 +125,17 @@ namespace UI.Desktop
         }
         public override void GuardarCambios()
         {
+
             this.MapearADatos();
             ComisionLogic cl = new ComisionLogic();
-            cl.Save(ComisionActual);
+            try
+            {
+                cl.Save(ComisionActual);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("No se puede eliminar la comision porque hay registros relacionados a esta");
+            }
         }
 
 

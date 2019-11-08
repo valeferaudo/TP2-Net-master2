@@ -111,7 +111,14 @@ namespace UI.Desktop
         {
             this.MapearADatos();
             EspecialidadLogic el = new EspecialidadLogic();
-            el.Save(EspecialidadActual);
+            try
+            {
+                el.Save(EspecialidadActual);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("No se puede eliminar la especialidad porque ya existen registros que dependen de esta");
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

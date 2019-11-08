@@ -131,7 +131,14 @@ namespace UI.Desktop
         {
             this.MapearADatos();
             CursoLogic cl = new CursoLogic();
-            cl.Save(CursoActual);
+            try
+            {
+                cl.Save(CursoActual);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("No se puede eliminar el curso porque ya hay alumnos inscriptos");
+            }
         }
         public void SetCBComision()
         {

@@ -128,7 +128,14 @@ namespace UI.Desktop
         {
             this.MapearADatos();
             MateriaLogic ml = new MateriaLogic();
-            ml.Save(MateriaActual);
+            try
+            {
+                ml.Save(MateriaActual);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("No se puede eliminar la materia porque existen cursos asociadas a esta");
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
