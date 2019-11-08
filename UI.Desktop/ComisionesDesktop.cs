@@ -66,6 +66,9 @@ namespace UI.Desktop
                 case ModoForm.Baja:
                     {
                         this.btnAceptar.Text = "Eliminar";
+                        txtAnioEspe.ReadOnly = true;
+                        txtDescripcion.ReadOnly = true;
+                        cbIDPlan.Enabled = false;
                     }
                     break;
                 case ModoForm.Modificacion:

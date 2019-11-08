@@ -64,6 +64,8 @@ namespace UI.Desktop
                 case ModoForm.Baja:
                     {
                         this.btnAceptar.Text = "Eliminar";
+                        txtDescripcion.ReadOnly = true;
+                        cbPlan.Enabled = false;
                     }
                     break;
                 case ModoForm.Modificacion:
@@ -91,16 +93,14 @@ namespace UI.Desktop
                         this.PlanActual = pla;
                         this.PlanActual.Descripcion = this.txtDescripcion.Text;
                         this.PlanActual.State = Business.Entities.Plan.States.New;
-                        ComboboxItem cbi = (ComboboxItem)this.cbPlan.SelectedItem;
-                        this.PlanActual.IDEspecialidad = cbi.Value;
+                        this.PlanActual.IDEspecialidad = Convert.ToInt32(cbPlan.SelectedValue);
                     }
                     break;
                 case ModoForm.Modificacion:
                     {
                         this.PlanActual.Descripcion = this.txtDescripcion.Text;
                         this.PlanActual.State = Business.Entities.Plan.States.Modified;
-                        ComboboxItem cbi = (ComboboxItem)this.cbPlan.SelectedItem;
-                        this.PlanActual.IDEspecialidad = cbi.Value;
+                        this.PlanActual.IDEspecialidad = Convert.ToInt32(cbPlan.SelectedValue);
                     }
                     break;
                 case ModoForm.Baja:

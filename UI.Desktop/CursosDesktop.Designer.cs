@@ -199,7 +199,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "CursosDesktop";
             this.Text = "CursosDesktop";
-            this.Load += new System.EventHandler(this.CursosDesktop_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

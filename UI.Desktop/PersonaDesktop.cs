@@ -236,7 +236,6 @@ namespace UI.Desktop
         {
             cmbTipoPersona.DataSource = Enum.GetValues(typeof(Personas.tipopersona));
             cmbTipoPersona.SelectedIndex = -1;
-            
         }    
     }
 }

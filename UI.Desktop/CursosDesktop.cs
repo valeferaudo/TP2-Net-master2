@@ -37,7 +37,9 @@ namespace UI.Desktop
         public CursosDesktop(ModoForm modo) : this()
         {
             this.Modo = modo;
-            SetCBMateria();
+            this.SetCBMateria();
+            cbComision.Enabled = false;
+            
         }
         public CursosDesktop(int ID, ModoForm modo) : this()
         {
@@ -46,7 +48,12 @@ namespace UI.Desktop
             CursoActual = cl.GetOne(ID);
             MapearDeDatos();
             SetCBMateria();
-                      
+            if (modo == ModoForm.Alta || modo == ModoForm.Modificacion)
+            {
+                cbComision.Enabled = true;
+            }
+                MateriaLogic ml = new MateriaLogic();
+            SetCBComision(CursoActual.IDMateria);
         }
         public override void MapearDeDatos()
 
@@ -65,6 +72,11 @@ namespace UI.Desktop
                 case ModoForm.Baja:
                     {
                         this.btnAceptar.Text = "Eliminar";
+                        txtAnio.ReadOnly = true;
+                        txtCupo.ReadOnly = true;
+                        txtID.ReadOnly = true;
+                        cbComision.Enabled = false;
+                        cbMateria.Enabled = false;
                     }
                     break;
                 case ModoForm.Modificacion:
@@ -146,8 +158,9 @@ namespace UI.Desktop
             cbComision.SelectedIndex = -1;
             if (CursoActual != null)
             {
-                string plstr = cl.GetOne(CursoActual.IDComision).Descripcion;
-                cbComision.SelectedIndex = cbComision.FindStringExact(plstr);
+                
+             string plstr = cl.GetOne(CursoActual.IDComision).Descripcion;
+              cbComision.SelectedIndex = cbComision.FindStringExact(plstr);
             }               
         }
         public void SetCBMateria()
@@ -253,10 +266,6 @@ namespace UI.Desktop
             cbComision.Enabled = true;
         }
 
-        private void CursosDesktop_Load(object sender, EventArgs e)
-        {
-            this.SetCBMateria();
-            cbComision.Enabled = false;
-        }
+        
     }
 }
