@@ -12,14 +12,14 @@ using Business.Logic;
 
 namespace UI.Desktop
 {
-    public partial class Inscripciones : Form
+    public partial class InscripcionesAlumno : Form
     {
         Personas alumno;
-        public Inscripciones()
+        public InscripcionesAlumno()
         {
             InitializeComponent();
         }
-        public Inscripciones(Personas alu, int ModoUsuario) : this()
+        public InscripcionesAlumno(Personas alu, int ModoUsuario) : this()
         {
             alumno = alu;
             int modo = ModoUsuario;

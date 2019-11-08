@@ -28,7 +28,8 @@ namespace Business.Entities
         }
         public enum TiposCargos
         {
-            
+            Titular,
+            Auxiliar
         }
     }
 }

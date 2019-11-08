@@ -298,7 +298,7 @@ namespace Data.Database
             }
             persona.State = BusinessEntity.States.Unmodified;            
         }
-        public List<Personas> GetAllAlumnos()
+        public List<Personas> TraerPorTipoPersona(int tipoper)
         {
             List<Personas> personas = new List<Personas>();
 
@@ -306,7 +306,8 @@ namespace Data.Database
             {
                 this.OpenConnection();
 
-                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM personas WHERE tipo_persona = 1 and deleted is null", sqlConn);
+                SqlCommand cmdUsuarios = new SqlCommand("SELECT * FROM personas WHERE tipo_persona = @x ", sqlConn);
+                cmdUsuarios.Parameters.Add("@x", SqlDbType.Int).Value = tipoper;
                 SqlDataReader drPersonas = cmdUsuarios.ExecuteReader();
                 while (drPersonas.Read())
                 {

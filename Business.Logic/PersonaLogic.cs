@@ -36,9 +36,9 @@ namespace Business.Logic
         {
             PersonaData.Save(per);
         }
-        public List<Personas> GetAllAlumnos()
+        public List<Personas> TraerPorTipoPersona(int tipoper)
         {
-            return PersonaData.GetAllAlumnos();
+            return PersonaData.TraerPorTipoPersona(tipoper);
         }
         
     }

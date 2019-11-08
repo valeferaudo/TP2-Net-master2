@@ -71,7 +71,7 @@ namespace UI.Desktop
 
             
             PersonaLogic pl = new PersonaLogic();
-            Form insc = new Inscripciones(pl.GetOne(usuariologeado.IDPersona),1);
+            Form insc = new InscripcionesAlumno(pl.GetOne(usuariologeado.IDPersona),1);
             insc.Show();
         
         }

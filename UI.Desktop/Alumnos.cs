@@ -21,9 +21,10 @@ namespace UI.Desktop
         PlanLogic pllog = new PlanLogic();
 
         public void Listar()
-        {                
+        {
+            int tipoper = 1;
             PersonaLogic pl = new PersonaLogic();
-            this.dgvAlumnos.DataSource = pl.GetAllAlumnos();
+            this.dgvAlumnos.DataSource = pl.TraerPorTipoPersona(tipoper);
             
             foreach (DataGridViewRow dr in dgvAlumnos.Rows)
             {
@@ -63,7 +64,7 @@ namespace UI.Desktop
             {
                 int ID = ((Business.Entities.Personas)this.dgvAlumnos.SelectedRows[0].DataBoundItem).ID;
                 PersonaLogic psl = new PersonaLogic();
-                Inscripciones inscr = new Inscripciones(psl.GetOne(ID),2);
+                InscripcionesAlumno inscr = new InscripcionesAlumno(psl.GetOne(ID),2);
                 inscr.ShowDialog();
                 this.Listar();
             }

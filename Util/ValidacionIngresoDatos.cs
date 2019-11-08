@@ -12,18 +12,17 @@ namespace Util
     {
         public static bool EsNumero(String strnro)
         {
-            int nro = 0;
-            bool result;
-            try
+            string expresion = "^([0-9])*$";
+            if(Regex.IsMatch(strnro, expresion))
             {
-                nro = Int32.Parse(strnro);
-                result = true;
+                return true;
             }
-            catch (FormatException)
+            else
             {
-                result = false;
+                return false;
             }
-            return result;
+
+
         }
         public static bool EsMail(string email)
         {

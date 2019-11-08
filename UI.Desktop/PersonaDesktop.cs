@@ -133,7 +133,9 @@ namespace UI.Desktop
         public override bool Validar()
         {
             
-                if (txtApellido.Text != "" && txtNombre.Text != "" && txtEmail.Text != "" && txtLegajo.Text != "" && txtTel.Text != "" && txtDireccion.Text != "" && cmbPlan.SelectedIndex != -1)
+                if (txtApellido.Text != "" && txtNombre.Text != "" && txtEmail.Text != "" && txtLegajo.Text != "" 
+                    && txtTel.Text != "" && txtDireccion.Text != "" 
+                   && cmbPlan.SelectedIndex != -1 && cmbTipoPersona.SelectedIndex != -1)
                 {
                     if (ValidacionIngresoDatos.EsMail(txtEmail.Text))
 
@@ -234,6 +236,7 @@ namespace UI.Desktop
         {
             cmbTipoPersona.DataSource = Enum.GetValues(typeof(Personas.tipopersona));
             cmbTipoPersona.SelectedIndex = -1;
+            
         }    
     }
 }
