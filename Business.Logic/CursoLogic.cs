@@ -52,7 +52,10 @@ namespace Business.Logic
             }
             
         }
-        
+        public List<Curso> GetCursosDisponiblesDocente(int id)
+        {
+            return CursoData.GetCursosDisponiblesDocente(id);
+        }
     }
     
 }

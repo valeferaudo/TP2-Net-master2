@@ -21,9 +21,8 @@ namespace UI.Desktop
         {
             InitializeComponent();
         }
-        public InscribirAlumnoMateria(int idalu)
+        public InscribirAlumnoMateria(int idalu) : this()
         {
-            InitializeComponent();
             idalumno = idalu;
             this.Listardisp();
         }

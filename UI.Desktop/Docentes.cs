@@ -59,7 +59,7 @@ namespace UI.Desktop
             {
                 int ID = ((Business.Entities.Personas)this.dgvDocente.SelectedRows[0].DataBoundItem).ID;
                 PersonaLogic psl = new PersonaLogic();
-                InscripcionesAlumno inscr = new InscripcionesAlumno(psl.GetOne(ID), 2);
+                InscripcionesDocente inscr = new InscripcionesDocente (psl.GetOne(ID));
                 inscr.ShowDialog();
                 this.Listar();
             }

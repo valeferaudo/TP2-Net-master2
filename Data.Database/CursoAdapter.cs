@@ -5,6 +5,7 @@ using Business.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace Data.Database
 {
     public class CursoAdapter : Adapter
@@ -336,6 +337,43 @@ namespace Data.Database
                 this.Update(curso);
             }
             curso.State = BusinessEntity.States.Unmodified;
+        }
+        public List<Curso> GetCursosDisponiblesDocente(int idPersona)
+        {
+            List<Curso> cursos = new List<Curso>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmd = new SqlCommand("SELECT cur.id_curso, cur.descripcion FROM cursos as cur " +
+                                                "INNER JOIN comisiones as comi on cur.id_comision = comi.id_comision " +
+                                                "INNER JOIN planes as pla on comi.id_plan = pla.id_plan  " +
+                                                "INNER JOIN personas as per on pla.id_plan = per.id_plan " +
+                                                "WHERE per.id_persona = @id AND cur.id_curso " +
+                                                "not in  (SELECT id_curso from docentes_cursos where id_docente = @id)",sqlConn);
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = idPersona;
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Curso cur = new Curso();
+                    cur.ID = (int)dr["id_curso"];
+                    cur.Descripcion = (string)dr["descripcion"];
+                    cursos.Add(cur);
+                }
+                dr.Close();
+                return cursos;
+
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar Cursos disponibles", Ex);
+                throw ExcepcionManejada;
+               
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return cursos;
         }
     }
 }

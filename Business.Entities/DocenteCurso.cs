@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    class DocenteCurso : BusinessEntity
+    public class DocenteCurso : BusinessEntity
     {
         private int _IDCurso;
         public int IDCurso
@@ -28,8 +28,20 @@ namespace Business.Entities
         }
         public enum TiposCargos
         {
-            Titular,
+            JefeCatedra,
             Auxiliar
+        }
+        private String _DescripcionDocente;
+        public String DescripcionDocente
+        {
+            get { return _DescripcionDocente; }
+            set { _DescripcionDocente = value; }
+        }
+        private String _DescripcionCurso;
+        public String DescripcionCurso
+        {
+            get { return _DescripcionCurso; }
+            set { _DescripcionCurso = value; }
         }
     }
 }
