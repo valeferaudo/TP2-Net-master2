@@ -28,7 +28,7 @@ namespace Business.Entities
         }
         public enum TiposCargos
         {
-            JefeCatedra,
+            JefeCatedra = 1 ,
             Auxiliar
         }
         private String _DescripcionDocente;

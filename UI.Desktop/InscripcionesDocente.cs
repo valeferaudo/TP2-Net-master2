@@ -18,6 +18,7 @@ namespace UI.Desktop
         public InscripcionesDocente()
         {
             InitializeComponent();
+            
         }
 
         private void InscripcionesDocente_Load(object sender, EventArgs e)
@@ -45,6 +46,16 @@ namespace UI.Desktop
             
             InscribirDocenteCurso inscr = new InscribirDocenteCurso(persona);
             inscr.ShowDialog();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            this.Listar();
         }
     }
 }
