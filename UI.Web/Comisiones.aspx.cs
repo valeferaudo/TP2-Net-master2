@@ -184,7 +184,14 @@ namespace UI.Web
 
         private void SaveEntity(Comision comision)
         {
-            this.Comision.Save(comision);
+            try
+            {
+                this.Comision.Save(comision);
+            }
+            catch (Exception)
+            {
+                Response.Write("<script>alert('No se puede eliminar, otros registros referencian a este')</script>");
+            }
         }
 
         protected void aceptarLinkButton_Click(object sender, EventArgs e)
@@ -207,9 +214,18 @@ namespace UI.Web
                     {
                         //this.Entity.State = BusinessEntity.States.Deleted;
                         //tira error
-                        //Hay que usar borrado logico
-                        this.DeleteEntity(this.SelectedID);
-                        this.LoadGrid();
+                        //Agarrar la excepcion y mostrar alerta
+                        try
+                        {
+                            this.DeleteEntity(this.SelectedID);
+                        }
+                        catch (Exception)
+                        {
+                            Response.Write("<script>alert('No se puede eliminar, otros registros referencian a este')</script>");
+                        }
+                            this.LoadGrid();
+                        
+                        
                     }
                     break;
                 case formModes.Modificacion:
@@ -247,7 +263,14 @@ namespace UI.Web
                 OcultarBotones();
                 this.formMode = formModes.Baja;
                 this.EnableForm(false);
-                this.DeleteEntity(this.SelectedID);
+                try
+                {
+                    this.DeleteEntity(this.SelectedID);
+                }
+                catch (Exception)
+                {
+                    Response.Write("<script>alert('No se puede eliminar, otros registros referencian a este')</script>");
+                }
                 this.LoadGrid();
             }
         }

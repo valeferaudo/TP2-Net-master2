@@ -210,7 +210,14 @@ namespace UI.Web
                     {
                         //this.Entity.State = BusinessEntity.States.Deleted;
                         //tira error
-                        this.DeleteEntity(this.SelectedID);
+                        try
+                        {
+                            this.DeleteEntity(this.SelectedID);
+                        }
+                        catch (Exception)
+                        {
+                            Response.Write("<script>alert('No se puede eliminar, otros registros referencian a este')</script>");
+                        }
                         this.LoadGrid();
                     }
                     break;
