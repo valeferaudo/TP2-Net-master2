@@ -59,7 +59,7 @@ namespace UI.Web
                 dt.Columns.Add("Legajo", typeof(string));
                 dt.Columns.Add("Plan", typeof(string));
             }
-            List < Personas > alumnos = pl.GetAllAlumnos();
+            List < Personas > alumnos = pl.TraerPorTipoPersona(1);
             foreach(Personas alumno in alumnos)
             {
                 int lenfecha = alumno.FechaNacimiento.ToString().Length;
@@ -133,12 +133,23 @@ namespace UI.Web
             if (SelectedID > 0)
             {
                 PersonaLogic perlog = new PersonaLogic();
-                perlog.Delete(SelectedID);
-                this.LlenarCombo();
-                this.CleantxtBox();
-                this.Panel1.Visible = false;
-                this.LoadGrid();
+                try
+                {
+                    perlog.Delete(SelectedID);
 
+                    this.LlenarCombo();
+                    this.CleantxtBox();
+                    this.Panel1.Visible = false;
+                    this.LoadGrid();
+                }
+                catch(Exception)
+                {
+
+
+                    Response.Write("<script>alert('No se puede eliminar, otros registros referencian a este')</script>");
+
+
+                }
             }
         }
 
