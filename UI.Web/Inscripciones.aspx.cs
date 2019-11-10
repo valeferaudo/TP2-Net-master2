@@ -32,13 +32,13 @@ namespace UI.Web
             {
                 Response.Redirect("~/Default.aspx");
             }
-            if (pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Alumno)
+            if (pl.GetOne(usuario.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Alumno)
             {
                 btnCalificar.Visible = false;
                 btnCalificar.Enabled = false;
                 alumno = (Usuario)Session["UsuarioSesion"];
             }
-            if(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin || pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Docente)
+            if(pl.GetOne(usuario.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Admin || pl.GetOne(usuario.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Docente)
             {
                 if ((Usuario)Session["AlumnoInscSel"] == null)
                 {

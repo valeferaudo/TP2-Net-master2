@@ -188,16 +188,21 @@ namespace UI.Desktop
         private void listplanesfill()
         {
             PlanLogic pllgc = new PlanLogic();
-            List<Plan> planes = pllgc.GetAll();
-            foreach (Plan value in planes)
-            {
-                //PENDIENTE : AGREGAR ESPECIALIDAD DEL PLAN Y CONCATENAR
-                cmbPlan.Items.Add(value.Descripcion);
-            }
+            
             if (PersonaActual != null)
             {
+                cmbPlan.DataSource = pllgc.TraerPorEspecialidad(pllgc.GetOne(PersonaActual.IDPlan).IDEspecialidad);
+                cmbPlan.DisplayMember = "Descripcion";
+                cmbPlan.ValueMember = "ID";
                 string plstr = pllgc.GetOne(PersonaActual.IDPlan).Descripcion;
                 cmbPlan.SelectedIndex = cmbPlan.FindStringExact(plstr);
+            }
+            else
+            {
+                cmbPlan.DataSource = pllgc.GetAll();
+                cmbPlan.DisplayMember = "Descripcion";
+                cmbPlan.ValueMember = "ID";
+                cmbPlan.SelectedIndex = -1;
             }
         }
 

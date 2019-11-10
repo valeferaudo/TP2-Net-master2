@@ -26,7 +26,7 @@ namespace UI.Web
             if (Session["UsuarioSesion"] != null){
                 usuario = (Usuario)Session["UsuarioSesion"];
             }
-            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin) && !(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Docente))
+            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Admin) && !(pl.GetOne(usuario.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Docente))
             {
                 Response.Redirect("~/Default.aspx");
             }
@@ -59,8 +59,8 @@ namespace UI.Web
                 dt.Columns.Add("Legajo", typeof(string));
                 dt.Columns.Add("Plan", typeof(string));
             }
-            List < Personas > alumnos = pl.TraerPorTipoPersona(1);
-            foreach(Personas alumno in alumnos)
+            List < Business.Entities.Personas > alumnos = pl.TraerPorTipoPersona(1);
+            foreach(Business.Entities.Personas alumno in alumnos)
             {
                 int lenfecha = alumno.FechaNacimiento.ToString().Length;
                 DataRow dr = dt.NewRow();
@@ -90,7 +90,7 @@ namespace UI.Web
             get { return (formModes)this.ViewState["formMode"]; }
             set { this.ViewState["formMode"] = value; }
         }
-        private Personas Entity
+        private Business.Entities.Personas Entity
         {
             get;
             set;
@@ -190,7 +190,7 @@ namespace UI.Web
                 if (this.formMode == formModes.Alta)
                 {
                     PersonaLogic pl = new PersonaLogic();
-                    Personas alumno = new Personas();
+                    Business.Entities.Personas alumno = new Business.Entities.Personas();
                     alumno.Apellido = txtApellido.Text;
                     alumno.Direccion = txtDireccion.Text;
                     alumno.Email = txtEmail.Text;
@@ -198,7 +198,7 @@ namespace UI.Web
                     alumno.Nombre = txtNombre.Text;
                     alumno.Telefono = txtTelefono.Text;
                     alumno.FechaNacimiento = Calendar1.SelectedDate;
-                    alumno.TipoPersona = Personas.tipopersona.Alumno;
+                    alumno.TipoPersona = Business.Entities.Personas.tipopersona.Alumno;
                     PlanLogic pllogc = new PlanLogic();
                     List<Plan> planes = pllogc.GetAll();
                     alumno.IDPlan = planes[DropDownListPlan.SelectedIndex].ID;
@@ -213,7 +213,7 @@ namespace UI.Web
                 if(this.formMode == formModes.Modificacion)
                 {
                     PersonaLogic perlog = new PersonaLogic();
-                    Personas alumno = perlog.GetOne(SelectedID); 
+                    Business.Entities.Personas alumno = perlog.GetOne(SelectedID); 
                     alumno.Apellido = txtApellido.Text;
                     alumno.Direccion = txtDireccion.Text;
                     alumno.Email = txtEmail.Text;

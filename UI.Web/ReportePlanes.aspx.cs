@@ -25,7 +25,7 @@ namespace UI.Web
 
             PersonaLogic pl = new PersonaLogic();
             Usuario usuario = (Usuario)Session["UsuarioSesion"];
-            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Personas.tipopersona.Admin))
+            if (!(pl.GetOne(usuario.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Admin))
             {
                 Response.Redirect("~/Default.aspx");
             }

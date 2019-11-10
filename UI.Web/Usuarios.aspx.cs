@@ -37,7 +37,7 @@ namespace UI.Web
             }
             PersonaLogic pl = new PersonaLogic();
             Usuario usuariolog = (Usuario)Session["UsuarioSesion"];
-            if (!(pl.GetOne(usuariolog.IDPersona).TipoPersona == Personas.tipopersona.Admin) && !(pl.GetOne(usuariolog.IDPersona).TipoPersona == Personas.tipopersona.Docente))
+            if (!(pl.GetOne(usuariolog.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Admin) && !(pl.GetOne(usuariolog.IDPersona).TipoPersona == Business.Entities.Personas.tipopersona.Docente))
             {
                 Response.Redirect("~/Default.aspx");
             }
@@ -122,10 +122,10 @@ namespace UI.Web
             this.habilitadoCheckBox.Checked = this.Entity.Habilitado;
             this.nombreUsuarioTextBox.Text = this.Entity.NombreUsuario;
             PersonaLogic pl = new PersonaLogic();
-            List<Personas> personas = pl.GetAll();
-            Personas persona = pl.GetOne(Entity.IDPersona);
+            List<Business.Entities.Personas> personas = pl.GetAll();
+            Business.Entities.Personas persona = pl.GetOne(Entity.IDPersona);
             bool contiene = false;//Verificar que no este borrado logico, si esta borrado, no setear dropdown
-            foreach (Personas perso in personas)
+            foreach (Business.Entities.Personas perso in personas)
             {
                 if (perso.ID == persona.ID)
                 {
@@ -279,8 +279,8 @@ namespace UI.Web
         {
             ddlPersona.Items.Clear();
             PersonaLogic pl = new PersonaLogic();
-            List<Personas> personas = pl.GetAll();
-            foreach (Personas persona in personas)
+            List<Business.Entities.Personas> personas = pl.GetAll();
+            foreach (Business.Entities.Personas persona in personas)
             {
                 ListItem item = new ListItem();
                 item.Text = persona.Nombre + " " + persona.Apellido;
