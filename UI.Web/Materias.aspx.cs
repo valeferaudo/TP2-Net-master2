@@ -145,23 +145,18 @@ namespace UI.Web
             this.descripcionTextBox.Text = this.Entity.Descripcion;
             this.hsSemanalesTextBox.Text = (this.Entity.HSSemanales).ToString();
             this.hsTotalesTextBox.Text = (this.Entity.HSTotales).ToString();
+            this.LlenarDropMateria();
             PlanLogic pl = new PlanLogic();
             List<Plan> planes = pl.GetAll();
             Plan plan = pl.GetOne(Entity.IDPlan);
-            bool contiene = false;//Verificar que no este borrado logico, si esta borrado, no setear dropdown
             foreach (Plan pla in planes)
             {
                 if (pla.ID == plan.ID)
                 {
-                    contiene = true;
+                    this.ddlPlanes.SelectedValue = (this.Entity.IDPlan).ToString();
                 }
             }
-            if (contiene)
-            {
-                this.ddlPlanes.SelectedValue = (this.Entity.IDPlan).ToString();
-            }
-            
-
+                    
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -268,6 +263,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            
             OcultarBotones();
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
@@ -287,21 +283,38 @@ namespace UI.Web
             MostrarBotones();
             this.formPanel.Visible = false;
             this.ClearForm();
+            
         }
 
         public void LlenarDropMateria()
         {
             ddlPlanes.Items.Clear();
             PlanLogic pl = new PlanLogic();
-            List<Plan> planes = pl.GetAll();
-            foreach (Plan plan in planes)
+            if(this.Entity != null)
             {
-                ListItem item = new ListItem();
-                item.Text = plan.Descripcion;
-                item.Value = Convert.ToString(plan.ID);
+                List<Plan> planes = pl.TraerPorEspecialidad(pl.GetOne(Entity.IDPlan).IDEspecialidad);
+                foreach (Plan plan in planes)
+                {
+                    ListItem item = new ListItem();
+                    item.Text = plan.Descripcion;
+                    item.Value = Convert.ToString(plan.ID);
 
-                ddlPlanes.Items.Add(item);
+                    ddlPlanes.Items.Add(item);
+                }
             }
+            else
+            {
+                List<Plan> planes = pl.GetAll();
+                foreach (Plan plan in planes)
+                {
+                    ListItem item = new ListItem();
+                    item.Text = plan.Descripcion;
+                    item.Value = Convert.ToString(plan.ID);
+
+                    ddlPlanes.Items.Add(item);
+                }
+            }
+           
         }
         private void OcultarBotones()
         {

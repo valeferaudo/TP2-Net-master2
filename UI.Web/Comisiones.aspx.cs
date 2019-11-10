@@ -147,20 +147,17 @@ namespace UI.Web
             this.Entity = this.Comision.GetOne(ID);
             this.descripcionTextBox.Text = this.Entity.Descripcion;
             this.anioEspecialidadTextBox.Text = (this.Entity.AnioEspecialidad).ToString();
+            this.LlenarDropPlanes();
             List<Plan> planes = pl.GetAll();
             Plan plan = pl.GetOne(Entity.IDPlan);
-            bool contiene = false;//Verificar que no este borrado logico, si esta borrado, no setear dropdown
-            foreach(Plan planaaa in planes)
+            foreach(Plan pla in planes)
             {
-                if (planaaa.ID == plan.ID)
+                if (pla.ID == plan.ID)
                 {
-                    contiene = true;
+                    this.DropDownList1.SelectedValue = (this.Entity.IDPlan).ToString();
                 }
             }
-            if (contiene)
-            {
-                this.DropDownList1.SelectedValue = (this.Entity.IDPlan).ToString();
-            }
+            
         }
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
@@ -306,15 +303,31 @@ namespace UI.Web
         {
             DropDownList1.Items.Clear();
             PlanLogic pl = new PlanLogic();
-            List<Plan> planes = pl.GetAll();
-            foreach (Plan plan in planes)
+            if(this.Entity != null)
             {
-                ListItem item = new ListItem();
-                item.Text = plan.Descripcion;
-                item.Value = Convert.ToString(plan.ID);
+                List<Plan> planes = pl.TraerPorEspecialidad(pl.GetOne(Entity.IDPlan).IDEspecialidad);
+                foreach (Plan plan in planes)
+                {
+                    ListItem item = new ListItem();
+                    item.Text = plan.Descripcion;
+                    item.Value = Convert.ToString(plan.ID);
 
-                DropDownList1.Items.Add(item);
+                    DropDownList1.Items.Add(item);
+                }
             }
+            else
+            {
+                List<Plan> planes = pl.GetAll();
+                foreach (Plan plan in planes)
+                {
+                    ListItem item = new ListItem();
+                    item.Text = plan.Descripcion;
+                    item.Value = Convert.ToString(plan.ID);
+
+                    DropDownList1.Items.Add(item);
+                }
+            }
+            
         }
         private void OcultarBotones()
         {

@@ -6,6 +6,7 @@
   <siteMapNode url="~/Planes.aspx" title="Planes" id="planes-menu"  description="" />
   <siteMapNode url="~/Comisiones.aspx" title="Comisiones" id="comisiones-menu"  description="" />
   <siteMapNode url="~/Materias.aspx" title="Materias" id="materias-menu"  description="" />
+  <siteMapNode url="~/Cursos.aspx" title="Cursos" id="cursos-menu"  description="" />
   <siteMapNode url="~/Alumnos.aspx" title="Alumnos" id="alumnos-menu"  description="" />
   <siteMapNode url="~/Inscripciones.aspx" title="Mis Inscripciones" id="mis-insc-menu"  description="" />
   <siteMapNode url="~/ReporteCursos.aspx" title="Reporte Cursos" id="rep-curso"  description="" />
