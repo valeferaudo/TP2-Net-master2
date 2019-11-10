@@ -44,7 +44,7 @@ namespace UI.Web
                 }
                 if (!IsPostBack)
                 {
-                    this.LlenarDropPlanes();
+                  //this.LlenarDropPlanes();
                 }
             }
         }
@@ -162,7 +162,7 @@ namespace UI.Web
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
-            
+            this.LlenarDropPlanes();
             if (this.IsEntitySelected)
             {
                 OcultarBotones();
@@ -255,6 +255,7 @@ namespace UI.Web
 
         protected void eliminarLinkButton_Click(object sender, EventArgs e)
         {
+            this.LlenarDropPlanes();
             if (this.IsEntitySelected)
             {
                 OcultarBotones();
@@ -278,6 +279,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            this.LlenarDropPlanes();
             OcultarBotones();
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;

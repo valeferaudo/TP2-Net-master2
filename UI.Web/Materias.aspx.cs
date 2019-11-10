@@ -40,7 +40,7 @@ namespace UI.Web
             }
             if (!IsPostBack)
             {
-                this.LlenarDropMateria();
+              //this.LlenarDropMateria();
             }
         }
         private MateriaLogic _Materia;
@@ -161,7 +161,7 @@ namespace UI.Web
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
-            
+            this.LlenarDropMateria();
             if (this.IsEntitySelected)
             {
                 OcultarBotones();
@@ -263,7 +263,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
-            
+            this.LlenarDropMateria();
             OcultarBotones();
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;

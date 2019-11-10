@@ -33,8 +33,8 @@ namespace UI.Web
             if (!IsPostBack)
             {
                 
-               this.LlenarComboMateria();
-                this.LlenarComboComision();
+             //this.LlenarComboMateria();
+             // this.LlenarComboComision();
                
             }
             if (IsPostBack)
@@ -171,6 +171,8 @@ namespace UI.Web
 
         protected void editarLinkButton_Click(object sender, EventArgs e)
         {
+            this.LlenarComboMateria();
+            this.LlenarComboComision();
             if (this.IsEntitySelected)
             {
                 OcultarBotones();
@@ -287,6 +289,8 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            this.LlenarComboMateria();
+            this.LlenarComboComision();
             OcultarBotones();
             this.formPanel.Visible = true;
             this.formMode = formModes.Alta;
