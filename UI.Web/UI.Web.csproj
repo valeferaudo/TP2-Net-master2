@@ -86,8 +86,10 @@
     <Content Include="Comisiones.aspx" />
     <Content Include="Cursos.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Docentes.aspx" />
     <Content Include="Especialidades.aspx" />
     <Content Include="Inscripciones.aspx" />
+    <Content Include="InscripcionesDocente.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Materias.aspx" />
     <Content Include="Personas.aspx" />
@@ -156,6 +158,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Docentes.aspx.cs">
+      <DependentUpon>Docentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docentes.aspx.designer.cs">
+      <DependentUpon>Docentes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -172,6 +181,13 @@
     </Compile>
     <Compile Include="Inscripciones.aspx.designer.cs">
       <DependentUpon>Inscripciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InscripcionesDocente.aspx.cs">
+      <DependentUpon>InscripcionesDocente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InscripcionesDocente.aspx.designer.cs">
+      <DependentUpon>InscripcionesDocente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
