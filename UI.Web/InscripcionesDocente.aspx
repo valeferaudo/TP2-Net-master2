@@ -6,7 +6,7 @@
         Inscripciones:<asp:GridView ID="gridViewInscripciones" runat="server" AutoGenerateColumns="False" >
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" />
-                <asp:BoundField HeaderText="Curso" DataField="DescripcionCurso" />
+                <asp:BoundField HeaderText="Curso" DataField="descripcionCurso" />
                 <asp:BoundField HeaderText="Cargo" DataField="Cargo" />
                 
              </Columns>

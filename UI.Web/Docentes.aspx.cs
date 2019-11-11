@@ -16,7 +16,7 @@ namespace UI.Web
         {
             if (!IsPostBack)
             {
-                Session["AlumnoInscSel"] = null;
+                Session["DocenteSelec"] = null;
             }
 
             PersonaLogic pl = new PersonaLogic();
@@ -76,17 +76,40 @@ namespace UI.Web
             this.GridViewAlumnos.DataSource = dt;
             this.GridViewAlumnos.DataBind();
         }
-        int id;
+        private int SelectedID
+        {
+            get
+            {
+                if (this.ViewState["SelectedID"] != null)
+                {
+                    return (int)this.ViewState["SelectedID"];
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            set
+            {
+                this.ViewState["SelectedID"] = value;
+            }
+        }
+        
         protected void gridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            id = (int)Convert.ToInt32(this.GridViewAlumnos.SelectedRow.Cells[0].Text);
+            this.SelectedID = (int)Convert.ToInt32(this.GridViewAlumnos.SelectedRow.Cells[0].Text);
 
         }
             
 
         protected void btnInscripciones_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/InscripcionesDocente.aspx?valor=" + id);
+            PersonaLogic pl = new PersonaLogic();
+            Business.Entities.Personas persona = new Business.Entities.Personas();
+            persona = pl.GetOne(this.SelectedID);
+            Session["DocenteSelec"] = persona;
+            Response.Redirect("~/InscripcionesDocente.aspx");
+            
         }
     }
 }

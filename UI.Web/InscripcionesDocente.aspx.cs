@@ -12,6 +12,7 @@ namespace UI.Web
     public partial class InscripcionesDocente : System.Web.UI.Page
     {
         Usuario usuario;
+        Business.Entities.Personas perso;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,6 +25,15 @@ namespace UI.Web
             {
                 Response.Redirect("~/Default.aspx");
             }
+            
+            if ((Business.Entities.Personas)Session["DocenteSelec"] != null)
+            {
+                perso = (Business.Entities.Personas)Session["DocenteSelec"];
+            }
+            else
+            {
+                Response.Redirect("~/Default.aspx");
+            }
             if (!IsPostBack)
             {
                 this.Listar();
@@ -31,12 +41,12 @@ namespace UI.Web
         }
         private void Listar()
         {
-            if (Request.Params["valor"] != null)
-            {
+            
                 DocenteCursoLogic dcl = new DocenteCursoLogic();
-                int id = Convert.ToInt32(Request.Params["valor"]);
-                this.gridViewInscripciones.DataSource = dcl.GetInscripcionesDocente(id);
-            }
+                
+                this.gridViewInscripciones.DataSource = dcl.GetInscripcionesDocente(perso.ID);
+            this.gridViewInscripciones.DataBind();
+            
         }
 
         protected void btnNuevaInscripcion_Click(object sender, EventArgs e)
@@ -48,19 +58,27 @@ namespace UI.Web
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            //La parte de guardar
+            DocenteCursoLogic dcl = new DocenteCursoLogic();
+            DocenteCurso docenteCurso = new DocenteCurso();
+            docenteCurso.IDDocente = perso.ID;
+            docenteCurso.IDCurso = Convert.ToInt32(ddlCurso.SelectedValue);
+            docenteCurso.Cargo = (DocenteCurso.TiposCargos)(ddlCargo.SelectedIndex);
+            docenteCurso.State = BusinessEntity.States.New;
+            dcl.Save(docenteCurso);
             PanelInscribir.Visible = false;
+            this.Listar();
         }
         public void LlenarCursos()
         {
             ddlCurso.Items.Clear();
-            if (Request.Params["valor"] != null)
-            {
+            
                 CursoLogic cl = new CursoLogic();
-                int id = Convert.ToInt32(Request.Params["valor"]);
-                ddlCurso.DataSource = cl.GetCursosDisponiblesDocente(id);
+                
+                ddlCurso.DataSource = cl.GetCursosDisponiblesDocente(perso.ID);
+            ddlCurso.DataTextField = "Descripcion";
+            ddlCurso.DataValueField = "ID";
                 ddlCurso.DataBind();
-            }
+            
         }
         public void LlenarCargos()
         {
