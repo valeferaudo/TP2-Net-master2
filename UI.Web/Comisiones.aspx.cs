@@ -88,6 +88,7 @@ namespace UI.Web
             }
             this.gridViewComisiones.DataSource = dt;
             this.gridViewComisiones.DataBind();
+            this.gridViewComisiones.SelectedIndex = -1;
         }
         public enum formModes
         {
