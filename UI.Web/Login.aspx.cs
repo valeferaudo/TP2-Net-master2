@@ -30,7 +30,7 @@ namespace UI.Web
                 }
                 else
                 {
-                    Page.Response.Write("Usuario o clave incorrectos");
+                    Response.Write("<script>alert('Credenciales incorrectas')</script>");
                 }
             }
             else
