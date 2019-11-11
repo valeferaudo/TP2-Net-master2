@@ -34,6 +34,9 @@ namespace UI.Web
             if (!IsPostBack)
             {
                 this.Panel1.Visible = false;
+                this.btnEditar.Visible = false;
+                this.btnEliminar.Visible = false;
+                this.btnNuevo.Visible = false;
                 this.LlenarCombo();
             }
             if (IsPostBack)
