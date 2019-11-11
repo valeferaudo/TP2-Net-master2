@@ -167,7 +167,23 @@ namespace UI.Web
                 OcultarBotones();
                 this.formPanel.Visible = true;
                 this.formMode = formModes.Modificacion;
+               
                 this.EnableForm(true);
+                CursoLogic cl = new CursoLogic();
+                MateriaLogic ml = new MateriaLogic();
+                List<Curso> todosloscursos = cl.GetAll();
+                int cursodemateria = 0;
+                foreach(Curso curso in todosloscursos)
+                {
+                    if(curso.IDMateria == ml.GetOne(SelectedID).ID)
+                    {
+                        cursodemateria++;
+                    }
+                }
+                if (cursodemateria > 0)
+                {
+                    this.ddlPlanes.Enabled = false;
+                }
                 this.LoadForm(this.SelectedID);
             }
         }
@@ -224,6 +240,7 @@ namespace UI.Web
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
+                        this.ddlPlanes.Enabled = true;
                     }
                     break;
                 default:
@@ -283,6 +300,8 @@ namespace UI.Web
             MostrarBotones();
             this.formPanel.Visible = false;
             this.ClearForm();
+
+            this.ddlPlanes.Enabled = true;
             
         }
 

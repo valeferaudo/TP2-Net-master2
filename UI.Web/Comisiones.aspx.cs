@@ -171,6 +171,22 @@ namespace UI.Web
                 this.formMode = formModes.Modificacion;
                 this.EnableForm(true);
                 this.LoadForm(this.SelectedID);
+
+                CursoLogic cl = new CursoLogic();
+                ComisionLogic comlog = new ComisionLogic();
+                List<Curso> todosloscursos = cl.GetAll();
+                int cursodemateria = 0;
+                foreach(Curso curso in todosloscursos)
+                {
+                    if(curso.IDComision == comlog.GetOne(SelectedID).ID)
+                    {
+                        cursodemateria++;
+                    }
+                }
+                if (cursodemateria > 0)
+                {
+                    this.DropDownList1.Enabled = false;
+                }
             }
         }
         private void LoadEntity(Comision comision)
@@ -234,6 +250,7 @@ namespace UI.Web
                         this.LoadEntity(this.Entity);
                         this.SaveEntity(this.Entity);
                         this.LoadGrid();
+                        this.DropDownList1.Enabled = true;
                     }
                     break;
                 default:
@@ -280,6 +297,7 @@ namespace UI.Web
 
         protected void nuevoLinkButton_Click(object sender, EventArgs e)
         {
+            this.DropDownList1.Enabled = true;
             this.LlenarDropPlanes();
             OcultarBotones();
             this.formPanel.Visible = true;
@@ -301,6 +319,7 @@ namespace UI.Web
             MostrarBotones();   
             this.formPanel.Visible = false;
             this.ClearForm();
+            this.DropDownList1.Enabled = true;
         }
         private void LlenarDropPlanes()
         {
